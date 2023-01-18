@@ -2,9 +2,30 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    Layout = "";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<head>
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="index-parent">
+        <div class="index-logo">
+            <img src="images/logo.png" alt="logo" class="img-thumbnail" />
+            <br />
+            <h1>Welcome to RobertHeijn B.V.!</h1>
+            <br />
+            <p>The best shopping market in the Netherlands!</p>
+        </div>
+        <div class="index-btnlogin">
+            <a href="Login"><button type="button" class="btn btn-primary btn-lg">Login</button></a>
+        </div>
+        <div class="index-btnregister">
+            <a href="Register"><button type="button" class="btn btn-primary btn-lg">Register</button></a>
+        </div>
+    </div>
+</body>
