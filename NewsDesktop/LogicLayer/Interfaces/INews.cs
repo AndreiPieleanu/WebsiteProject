@@ -20,6 +20,7 @@ namespace LogicLayer.Interfaces
         public string NewsText { get; }
         public IImage Image { get; }
         public List<string> Tags { get; }
+        public NewsType NewsType { get; }
 
         public void AddTag(string tag)
         {

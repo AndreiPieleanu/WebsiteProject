@@ -10,7 +10,6 @@
     <Folder Include="DALExceptions\" />
     <Folder Include="LLExceptions\" />
     <Folder Include="Models\Factories\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
