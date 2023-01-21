@@ -13,10 +13,8 @@ namespace LogicLayer.Interfaces
         void AddNewsToCatalogue(INews newsToAdd, NewsCatalogue newsCatalogue);
         void EditNewsFromCatalogue(INews updatedNews, NewsCatalogue newsCatalogue);
         void RemoveNewsFromCatalogue(INews newsToRemove, NewsCatalogue newsCatalogue);
-        NewsCatalogue GetAllNews();
-        List<INews> GetAllNewsOfCategoryFromCatalogue(NewsCategory category, NewsCatalogue newsCatalogue);
-        List<INews> GetAllNewsOfTypeFromCatalogue(NewsType type, NewsCatalogue newsCatalogue);
-        List<INews> GetAllNewsWithTagFromCatalogue(string tag, NewsCatalogue newsCatalogue);
+        NewsCatalogue GetNewsCatalogue();
+        NewsCatalogue GetLatestNewsCatalogue();
         void ChangeEditedDateOfNews(DateTime newEditedDate, INews news);
 
     }

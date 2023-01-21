@@ -11,6 +11,7 @@ namespace LogicLayer.Interfaces
     public interface IUser
     {
         public int Id { get; }
+        public Credentials Credentials { get; }
         public PersonalDetails PersonalDetails { get; }
         public Privilege Privilege { get; }
     }

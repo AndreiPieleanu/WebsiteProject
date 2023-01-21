@@ -1,4 +1,5 @@
-﻿using LogicLayer.Interfaces;
+﻿using LogicLayer.Enums;
+using LogicLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,6 +33,41 @@ namespace LogicLayer.Models.News
             if (_news.ContainsKey(newsToRemove.Id))
             {
                 _news.Remove(newsToRemove.Id);
+            }
+        }
+        public List<INews> GetAllNewsOfCategory(NewsCategory category)
+        {
+            try
+            {
+                return AllNews.Where(kvp => kvp.Value.Category == category).Select(kvp => kvp.Value).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<INews> GetAllNewsOfType(NewsType type)
+        {
+            try
+            {
+                return AllNews.Where(kvp => kvp.Value.NewsType == type).Select(kvp => kvp.Value).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<INews> GetAllNewsWithTag(string tag)
+        {
+            try
+            {
+                return AllNews.Where(kvp => kvp.Value.Tags.Contains(tag)).Select(kvp => kvp.Value).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 

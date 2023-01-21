@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="WebAppDatabaseDesign" id="Project-2255" database="LogicalDesign" >
+	<schema name="INSTANCE" catalogname="WebAppDatabaseDesign" >
+		<table name="wa_images" prior="wa_" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="image_path" type="TEXT" jt="-1" />
+			<index name="pk_wa_images" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="wa_news" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="title" type="VARCHAR" length="100" jt="12" />
+			<column name="subtitle" type="VARCHAR" length="100" jt="12" />
+			<column name="news_text" type="TEXT" length="250" jt="-1" />
+			<column name="reading_time" type="INT" jt="4" />
+			<column name="category_id" type="INT" jt="4" />
+			<column name="created_date" type="DATE" jt="91" />
+			<column name="edited_date" type="DATE" jt="91" />
+			<column name="type_id" type="INT" jt="4" />
+			<column name="author_id" type="INT" jt="4" />
+			<index name="pk_wa_news" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="wa_news_category" prior="entity" >
+			<column name="id" type="INT" jt="4" />
+			<column name="category_type" type="VARCHAR" length="20" jt="12" />
+		</table>
+		<table name="wa_news_images" prior="entity" >
+			<column name="news_id" type="INT" jt="4" />
+			<column name="image_id" type="INT" jt="4" />
+		</table>
+		<table name="wa_news_tag" prior="entity" >
+			<column name="news_id" type="INT" jt="4" />
+			<column name="tag_id" type="INT" jt="4" />
+		</table>
+		<table name="wa_news_type" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="news_type" type="VARCHAR" length="20" jt="12" />
+			<index name="pk_wa_news_type" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="wa_privillege" prior="entity" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="privillege" type="VARCHAR" length="10" jt="12" />
+			<index name="pk_wa_privillege" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="wa_tag" prior="wa_" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="tag_text" type="VARCHAR" length="20" jt="12" />
+			<index name="pk_wa_tag" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="wa_user" prior="user" >
+			<column name="id" type="INT" jt="4" mandatory="y" />
+			<column name="first_name" type="VARCHAR" length="50" jt="12" />
+			<column name="last_name" type="VARCHAR" length="50" jt="12" />
+			<column name="email" type="VARCHAR" length="50" jt="12" />
+			<column name="password" type="VARCHAR" length="60" jt="12" />
+			<column name="salt" type="VARCHAR" length="20" jt="12" />
+			<column name="privillege_id" prior="privillege" type="INT" jt="4" />
+			<index name="pk_wa_user" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-1200" show_relation="columns" >
+		<entity schema="WebAppDatabaseDesign.INSTANCE" name="wa_images" color="C1D8EE" x="992" y="224" />
+		<entity schema="WebAppDatabaseDesign.INSTANCE" name="wa_news" color="C1D8EE" x="608" y="192" />
+		<entity schema="WebAppDatabaseDesign.INSTANCE" name="wa_news_category" color="C1D8EE" x="912" y="384" />
+		<entity schema="WebAppDatabaseDesign.INSTANCE" name="wa_news_images" color="C1D8EE" x="784" y="224" />
+		<entity schema="WebAppDatabaseDesign.INSTANCE" name="wa_news_tag" color="C1D8EE" x="416" y="480" />
+		<entity schema="WebAppDatabaseDesign.INSTANCE" name="wa_news_type" color="C1D8EE" x="800" y="464" />
+		<entity schema="WebAppDatabaseDesign.INSTANCE" name="wa_privillege" color="C1D8EE" x="96" y="304" />
+		<entity schema="WebAppDatabaseDesign.INSTANCE" name="wa_tag" color="C1D8EE" x="272" y="560" />
+		<entity schema="WebAppDatabaseDesign.INSTANCE" name="wa_user" color="C1D8EE" x="304" y="240" />
+		<callout x="48" y="48" pointer="Round" >
+			<comment><![CDATA[This is a layout - a diagram with tools.
+- Create new entities by right-clicking the layout. 
+- Double-click entity headers to edit.
+- For a better understanding of the schema, create multiple layouts.
+- Deploy the model into the database by converting it first to the physical design.]]></comment>
+		</callout>
+	</layout>
+</project>

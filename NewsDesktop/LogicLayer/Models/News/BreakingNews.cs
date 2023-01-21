@@ -30,13 +30,13 @@ namespace LogicLayer.Models.News
         public string NewsText { get; }
 
         public IImage Image { get; }
-        public IImage SecondaryImage { get; }
-        public IImage ThirdImage { get; }
+        public IImage? SecondaryImage { get; }
+        public IImage? ThirdImage { get; }
 
         public List<string> Tags { get; }
 
         public NewsType NewsType { get; }
-        public BreakingNews(int id, string title, string subTitle, IUser author, DateTime editedDate, NewsCategory category, int readingTime, string newsText, IImage image, List<string> tags, IImage secondaryImage = null, IImage thirdImage = null)
+        public BreakingNews(int id, string title, string subTitle, IUser author, DateTime editedDate, NewsCategory category, int readingTime, string newsText, IImage image, List<string> tags, IImage? secondaryImage = null, IImage? thirdImage = null)
         {
             Id = id;
             Title = title;
@@ -53,7 +53,7 @@ namespace LogicLayer.Models.News
             NewsType = NewsType.BreakingNews;
             ThirdImage = thirdImage;
         }
-        public BreakingNews(string title, string subTitle, IUser author, DateTime editedDate, NewsCategory category, int readingTime, string newsText, IImage image, List<string> tags)
+        public BreakingNews(string title, string subTitle, IUser author, DateTime editedDate, NewsCategory category, int readingTime, string newsText, IImage image, List<string> tags, IImage? secondaryImage = null, IImage? thirdImage = null)
         {
             Title = title;
             SubTitle = subTitle;
@@ -66,6 +66,8 @@ namespace LogicLayer.Models.News
             Image = image;
             Tags = tags;
             NewsType = NewsType.BreakingNews;
+            SecondaryImage = secondaryImage;
+            ThirdImage = thirdImage;
         }
 
         public void ChangeEditedDate(DateTime newTime)

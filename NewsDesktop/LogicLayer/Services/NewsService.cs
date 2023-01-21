@@ -82,47 +82,22 @@ namespace LogicLayer.Services
             }
         }
 
-        public NewsCatalogue GetAllNews()
+        public NewsCatalogue GetNewsCatalogue()
         {
             try
             {
-                return _newsDal.GetAllNews();
+                return _newsDal.GetNewsCatalogue();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-
-        public List<INews> GetAllNewsOfCategoryFromCatalogue(NewsCategory category, NewsCatalogue newsCatalogue)
+        public NewsCatalogue GetLatestNewsCatalogue()
         {
             try
             {
-                return newsCatalogue.AllNews.Where(kvp => kvp.Value.Category == category).Select(kvp => kvp.Value).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public List<INews> GetAllNewsOfTypeFromCatalogue(NewsType type, NewsCatalogue newsCatalogue)
-        {
-            try
-            {
-                return newsCatalogue.AllNews.Where(kvp => kvp.Value.NewsType == type).Select(kvp => kvp.Value).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public List<INews> GetAllNewsWithTagFromCatalogue(string tag, NewsCatalogue newsCatalogue)
-        {
-            try
-            {
-                return newsCatalogue.AllNews.Where(kvp => kvp.Value.Tags.Contains(tag)).Select(kvp => kvp.Value).ToList();
+                return _newsDal.GetLatestNewsCatalogue();
             }
             catch (Exception ex)
             {

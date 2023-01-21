@@ -11,18 +11,21 @@ namespace LogicLayer.Models
     public class Author: IUser
     {
         public int Id { get; }
+        public Credentials Credentials { get; }
         public PersonalDetails PersonalDetails { get; }
         public Privilege Privilege { get; }
-        public Author(int id, PersonalDetails personalDetails)
+        public Author(int id, PersonalDetails personalDetails, Credentials credentials)
         {
             Id = id;
             PersonalDetails = personalDetails;
             Privilege = Privilege.Author;
+            Credentials = credentials;
         }
-        public Author(PersonalDetails personalDetails)
+        public Author(PersonalDetails personalDetails, Credentials credentials)
         {;
             PersonalDetails = personalDetails;
             Privilege = Privilege.Author;
+            Credentials = credentials;
         }
     }
 }
