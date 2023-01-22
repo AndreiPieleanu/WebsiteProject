@@ -1,4 +1,6 @@
-﻿using LogicLayer.Interfaces;
+﻿using LogicLayer.DALExceptions;
+using LogicLayer.Interfaces;
+using LogicLayer.LLExceptions;
 using LogicLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -19,17 +21,21 @@ namespace LogicLayer.Services
         {
             try
             {
+                if(string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                {
+                    throw new AuthException("Credentials are empty!");
+                }
                 Password correctUserPassword = _userDal.GetPassword(email);
                 string inputGeneratedEncryption = new Password().GenerateEncryption(correctUserPassword.Salt!, password);
                 if (correctUserPassword.EncryptedPassword != inputGeneratedEncryption)
                 {
-                    throw new Exception("Incorrect credentials!");
+                    throw new AuthException("Incorrect credentials!");
                 }
                 return _userDal.GetUser(email);
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
             }
         }
 
@@ -39,9 +45,9 @@ namespace LogicLayer.Services
             {
                 return _userDal.GetUser(email);
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
             }
         }
 
@@ -54,14 +60,14 @@ namespace LogicLayer.Services
                 {
                     if (onePerson.Equals(user))
                     {
-                        throw new Exception("A user with this email already exists!");
+                        throw new AuthException("A user with this email already exists!");
                     }
                 }
                 _userDal.RegisterUser(user);
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
             }
         }
 

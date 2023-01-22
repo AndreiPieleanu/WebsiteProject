@@ -37,38 +37,21 @@ namespace LogicLayer.Models.News
         }
         public List<INews> GetAllNewsOfCategory(NewsCategory category)
         {
-            try
-            {
-                return AllNews.Where(kvp => kvp.Value.Category == category).Select(kvp => kvp.Value).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return AllNews.Where(kvp => kvp.Value.Category == category).Select(kvp => kvp.Value).ToList();
         }
 
         public List<INews> GetAllNewsOfType(NewsType type)
         {
-            try
-            {
-                return AllNews.Where(kvp => kvp.Value.NewsType == type).Select(kvp => kvp.Value).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return AllNews.Where(kvp => kvp.Value.NewsType == type).Select(kvp => kvp.Value).ToList();
         }
 
         public List<INews> GetAllNewsWithTag(string tag)
         {
-            try
-            {
-                return AllNews.Where(kvp => kvp.Value.Tags.Contains(tag)).Select(kvp => kvp.Value).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return AllNews.Where(kvp => kvp.Value.Tags.Contains(tag)).Select(kvp => kvp.Value).ToList();
+        }
+        public List<INews> GetLatestNews()
+        {
+            return AllNews.Values.OrderByDescending(n => n.CreatedDate).Where(n => n.CreatedDate <= DateTime.Now && n.CreatedDate >= DateTime.Now.AddDays(-5)).ToList();
         }
 
     }
