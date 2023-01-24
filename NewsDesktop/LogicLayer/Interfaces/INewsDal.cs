@@ -14,7 +14,6 @@ namespace LogicLayer.Interfaces
         void EditNewsFromCatalogue(INews updatedNews, NewsCatalogue newsCatalogue);
         void RemoveNewsFromCatalogue(INews newsToRemove, NewsCatalogue newsCatalogue);
         NewsCatalogue GetNewsCatalogue();
-        NewsCatalogue GetLatestNewsCatalogue();
         void ChangeEditedDateOfNews(DateTime newEditedDate, INews news);
 
     }

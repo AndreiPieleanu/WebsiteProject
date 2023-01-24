@@ -14,5 +14,9 @@ namespace LogicLayer.Interfaces
         public Credentials Credentials { get; }
         public PersonalDetails PersonalDetails { get; }
         public Privilege Privilege { get; }
+        public bool Equals(IUser user)
+        {
+            return user.Credentials.Email.Equals(Credentials.Email);
+        }
     }
 }

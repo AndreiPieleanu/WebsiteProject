@@ -40,12 +40,6 @@ namespace MockDAL
         {
             return NewsCatalogue;
         }
-        public NewsCatalogue GetLatestNewsCatalogue()
-        {
-            return NewsCatalogue;
-        }
-
-
         public void RemoveNewsFromCatalogue(INews newsToRemove, NewsCatalogue newsCatalogue)
         {
             return;

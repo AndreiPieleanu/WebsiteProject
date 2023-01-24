@@ -11,7 +11,7 @@ namespace LogicLayer.Interfaces
     {
         public void RegisterUser(IUser user);
         public Password GetPassword(string email);
-        public IUser? GetUser(string email);
+        public IUser GetUser(string email);
         public List<IUser> GetAllUsers();
     }
 }

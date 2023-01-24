@@ -45,5 +45,9 @@ namespace LogicLayer.Interfaces
             }
         }
         public void ChangeEditedDate(DateTime newTime);
+        public bool Equals(INews news)
+        {
+            return news.Title.Equals(Title) && news.SubTitle.Equals(SubTitle) && news.Author.Equals(Author) && news.CreatedDate.Date.Equals(CreatedDate.Date) && news.NewsText.Equals(NewsText) && news.ReadingTime == ReadingTime && news.Category == Category && news.NewsType == NewsType;
+        }
     }
 }

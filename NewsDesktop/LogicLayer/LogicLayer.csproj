@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DALExceptions\" />
-    <Folder Include="LLExceptions\" />
     <Folder Include="Models\Factories\" />
   </ItemGroup>
 
