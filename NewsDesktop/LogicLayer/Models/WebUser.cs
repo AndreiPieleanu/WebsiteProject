@@ -27,5 +27,9 @@ namespace LogicLayer.Models
             PersonalDetails = personalDetails;
             Privilege = Privilege.WebUser;
         }
+        public override string ToString()
+        {
+            return PersonalDetails.ToString();
+        }
     }
 }

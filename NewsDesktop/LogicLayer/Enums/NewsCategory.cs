@@ -17,5 +17,7 @@ namespace LogicLayer.Enums
         Entertainment = 7, 
         Sport = 8, 
         Cancan = 9, 
+        Science = 10, 
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LogicLayer.Enums;
 using LogicLayer.Interfaces;
+using LogicLayer.LLExceptions;
 using LogicLayer.Models;
 using LogicLayer.Models.News;
 using System;
@@ -144,6 +145,52 @@ namespace UnitTests.TestNews
             int expectedLatestNews = 6;
             // Assert 
             Assert.AreEqual(expectedLatestNews, result.Count);
+        }
+        [TestMethod]
+        public void SearchNewsWithExistingText_ShouldReturnGreatherThan0()
+        {
+            // Arrange
+            NewsCatalogue newsCatalogue = new NewsCatalogue();
+            foreach (INews news in ArrangeNews())
+            {
+                newsCatalogue.AddNews(news);
+            }
+            string validText = "uk";
+            // Act 
+            List<INews> result = newsCatalogue.GetAllNewsWhichContainText(validText);
+            // Assert 
+            Assert.IsTrue(result.Count > 0);
+        }
+        [TestMethod]
+        public void SearchNewsWithInexistingText_ShouldReturnNoElements()
+        {
+            // Arrange
+            NewsCatalogue newsCatalogue = new NewsCatalogue();
+            foreach (INews news in ArrangeNews())
+            {
+                newsCatalogue.AddNews(news);
+            }
+            string nonExistantText = "ssdfeqa";
+            // Act 
+            List<INews> result = newsCatalogue.GetAllNewsWhichContainText(nonExistantText);
+            // Assert 
+            Assert.IsTrue(result.Count == 0);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(NewsOperationException))]
+        public void SearchNewsWithInvalidText_ShouldReturnGreatherThan0()
+        {
+            // Arrange
+            NewsCatalogue newsCatalogue = new NewsCatalogue();
+            foreach (INews news in ArrangeNews())
+            {
+                newsCatalogue.AddNews(news);
+            }
+            string invalidText = null;
+            // Act 
+            List<INews> result = newsCatalogue.GetAllNewsWhichContainText(invalidText);
+            // Assert 
+            // The code written above is expected to throw an exception
         }
     }
 }

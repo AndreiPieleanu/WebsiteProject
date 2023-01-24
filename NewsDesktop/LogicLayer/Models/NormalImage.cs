@@ -26,5 +26,9 @@ namespace LogicLayer.Models
             Height = height;
             ImageLocation = imageLocation;
         }
+        public override string ToString()
+        {
+            return ImageLocation;
+        }
     }
 }
