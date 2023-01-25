@@ -30,6 +30,9 @@
         {
             this.tbcNews = new System.Windows.Forms.TabControl();
             this.tbpNormalNews = new System.Windows.Forms.TabPage();
+            this.lblNewsCategory = new System.Windows.Forms.Label();
+            this.cbxNewsCategory = new System.Windows.Forms.ComboBox();
+            this.lblOptional = new System.Windows.Forms.Label();
             this.btnPic2 = new System.Windows.Forms.Button();
             this.btnPic1 = new System.Windows.Forms.Button();
             this.lblAuthor = new System.Windows.Forms.Label();
@@ -49,12 +52,58 @@
             this.tbxTitle = new System.Windows.Forms.TextBox();
             this.tbpBreakingNews = new System.Windows.Forms.TabPage();
             this.tbpInfoNews = new System.Windows.Forms.TabPage();
+            this.lblNewsCategory2 = new System.Windows.Forms.Label();
+            this.cbxNewsCategory2 = new System.Windows.Forms.ComboBox();
+            this.lblOptional2 = new System.Windows.Forms.Label();
+            this.btnPic2_2 = new System.Windows.Forms.Button();
+            this.btnPic1_2 = new System.Windows.Forms.Button();
+            this.lblAuthor2 = new System.Windows.Forms.Label();
+            this.lblTimeToRead2 = new System.Windows.Forms.Label();
+            this.tbxTimeToRead2 = new System.Windows.Forms.TextBox();
+            this.pbxAdRight2 = new System.Windows.Forms.PictureBox();
+            this.pbxAdLeft2 = new System.Windows.Forms.PictureBox();
+            this.lbxTags2 = new System.Windows.Forms.ListBox();
+            this.btnAdd2 = new System.Windows.Forms.Button();
+            this.btnClear2 = new System.Windows.Forms.Button();
+            this.pbxPicture2_2 = new System.Windows.Forms.PictureBox();
+            this.pbxPicture1_2 = new System.Windows.Forms.PictureBox();
+            this.tbxText2_2 = new System.Windows.Forms.TextBox();
+            this.tbxText1_2 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbxAuthor2 = new System.Windows.Forms.TextBox();
+            this.tbxTitle2 = new System.Windows.Forms.TextBox();
+            this.lblNewsCategory3 = new System.Windows.Forms.Label();
+            this.cbxNewsCategory3 = new System.Windows.Forms.ComboBox();
+            this.btnPic1_3 = new System.Windows.Forms.Button();
+            this.lblAuthor3 = new System.Windows.Forms.Label();
+            this.lblTimeToRead3 = new System.Windows.Forms.Label();
+            this.tbxTimeToRead3 = new System.Windows.Forms.TextBox();
+            this.pbxAdRight3 = new System.Windows.Forms.PictureBox();
+            this.pbxAdLeft3 = new System.Windows.Forms.PictureBox();
+            this.lbxTags3 = new System.Windows.Forms.ListBox();
+            this.btnAdd3 = new System.Windows.Forms.Button();
+            this.btnClear3 = new System.Windows.Forms.Button();
+            this.pbxPicture1_3 = new System.Windows.Forms.PictureBox();
+            this.tbxText2_3 = new System.Windows.Forms.TextBox();
+            this.tbxText1_3 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.tbxAuthor3 = new System.Windows.Forms.TextBox();
+            this.tbxTitle3 = new System.Windows.Forms.TextBox();
             this.tbcNews.SuspendLayout();
             this.tbpNormalNews.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1)).BeginInit();
+            this.tbpBreakingNews.SuspendLayout();
+            this.tbpInfoNews.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPicture2_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1_3)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcNews
@@ -70,6 +119,9 @@
             // 
             // tbpNormalNews
             // 
+            this.tbpNormalNews.Controls.Add(this.lblNewsCategory);
+            this.tbpNormalNews.Controls.Add(this.cbxNewsCategory);
+            this.tbpNormalNews.Controls.Add(this.lblOptional);
             this.tbpNormalNews.Controls.Add(this.btnPic2);
             this.tbpNormalNews.Controls.Add(this.btnPic1);
             this.tbpNormalNews.Controls.Add(this.lblAuthor);
@@ -94,6 +146,35 @@
             this.tbpNormalNews.TabIndex = 0;
             this.tbpNormalNews.Text = "Normal news";
             this.tbpNormalNews.UseVisualStyleBackColor = true;
+            // 
+            // lblNewsCategory
+            // 
+            this.lblNewsCategory.AutoSize = true;
+            this.lblNewsCategory.Location = new System.Drawing.Point(524, 96);
+            this.lblNewsCategory.Name = "lblNewsCategory";
+            this.lblNewsCategory.Size = new System.Drawing.Size(61, 15);
+            this.lblNewsCategory.TabIndex = 17;
+            this.lblNewsCategory.Text = "Category: ";
+            // 
+            // cbxNewsCategory
+            // 
+            this.cbxNewsCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxNewsCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxNewsCategory.FormattingEnabled = true;
+            this.cbxNewsCategory.Location = new System.Drawing.Point(598, 93);
+            this.cbxNewsCategory.Name = "cbxNewsCategory";
+            this.cbxNewsCategory.Size = new System.Drawing.Size(182, 23);
+            this.cbxNewsCategory.TabIndex = 16;
+            this.cbxNewsCategory.SelectedIndexChanged += new System.EventHandler(this.cbxNewsCategory_SelectedIndexChanged);
+            // 
+            // lblOptional
+            // 
+            this.lblOptional.AutoSize = true;
+            this.lblOptional.Location = new System.Drawing.Point(244, 510);
+            this.lblOptional.Name = "lblOptional";
+            this.lblOptional.Size = new System.Drawing.Size(61, 15);
+            this.lblOptional.TabIndex = 1;
+            this.lblOptional.Text = "(Optional)";
             // 
             // btnPic2
             // 
@@ -253,6 +334,26 @@
             // 
             // tbpBreakingNews
             // 
+            this.tbpBreakingNews.Controls.Add(this.lblNewsCategory2);
+            this.tbpBreakingNews.Controls.Add(this.cbxNewsCategory2);
+            this.tbpBreakingNews.Controls.Add(this.lblOptional2);
+            this.tbpBreakingNews.Controls.Add(this.btnPic2_2);
+            this.tbpBreakingNews.Controls.Add(this.btnPic1_2);
+            this.tbpBreakingNews.Controls.Add(this.lblAuthor2);
+            this.tbpBreakingNews.Controls.Add(this.lblTimeToRead2);
+            this.tbpBreakingNews.Controls.Add(this.tbxTimeToRead2);
+            this.tbpBreakingNews.Controls.Add(this.pbxAdRight2);
+            this.tbpBreakingNews.Controls.Add(this.pbxAdLeft2);
+            this.tbpBreakingNews.Controls.Add(this.lbxTags2);
+            this.tbpBreakingNews.Controls.Add(this.btnAdd2);
+            this.tbpBreakingNews.Controls.Add(this.btnClear2);
+            this.tbpBreakingNews.Controls.Add(this.pbxPicture2_2);
+            this.tbpBreakingNews.Controls.Add(this.pbxPicture1_2);
+            this.tbpBreakingNews.Controls.Add(this.tbxText2_2);
+            this.tbpBreakingNews.Controls.Add(this.tbxText1_2);
+            this.tbpBreakingNews.Controls.Add(this.textBox4);
+            this.tbpBreakingNews.Controls.Add(this.tbxAuthor2);
+            this.tbpBreakingNews.Controls.Add(this.tbxTitle2);
             this.tbpBreakingNews.Location = new System.Drawing.Point(4, 24);
             this.tbpBreakingNews.Name = "tbpBreakingNews";
             this.tbpBreakingNews.Padding = new System.Windows.Forms.Padding(3);
@@ -263,6 +364,23 @@
             // 
             // tbpInfoNews
             // 
+            this.tbpInfoNews.Controls.Add(this.lblNewsCategory3);
+            this.tbpInfoNews.Controls.Add(this.cbxNewsCategory3);
+            this.tbpInfoNews.Controls.Add(this.btnPic1_3);
+            this.tbpInfoNews.Controls.Add(this.lblAuthor3);
+            this.tbpInfoNews.Controls.Add(this.lblTimeToRead3);
+            this.tbpInfoNews.Controls.Add(this.tbxTimeToRead3);
+            this.tbpInfoNews.Controls.Add(this.pbxAdRight3);
+            this.tbpInfoNews.Controls.Add(this.pbxAdLeft3);
+            this.tbpInfoNews.Controls.Add(this.lbxTags3);
+            this.tbpInfoNews.Controls.Add(this.btnAdd3);
+            this.tbpInfoNews.Controls.Add(this.btnClear3);
+            this.tbpInfoNews.Controls.Add(this.pbxPicture1_3);
+            this.tbpInfoNews.Controls.Add(this.tbxText2_3);
+            this.tbpInfoNews.Controls.Add(this.tbxText1_3);
+            this.tbpInfoNews.Controls.Add(this.textBox10);
+            this.tbpInfoNews.Controls.Add(this.tbxAuthor3);
+            this.tbpInfoNews.Controls.Add(this.tbxTitle3);
             this.tbpInfoNews.Location = new System.Drawing.Point(4, 24);
             this.tbpInfoNews.Name = "tbpInfoNews";
             this.tbpInfoNews.Padding = new System.Windows.Forms.Padding(3);
@@ -270,6 +388,340 @@
             this.tbpInfoNews.TabIndex = 2;
             this.tbpInfoNews.Text = "Did you know?";
             this.tbpInfoNews.UseVisualStyleBackColor = true;
+            // 
+            // lblNewsCategory2
+            // 
+            this.lblNewsCategory2.AutoSize = true;
+            this.lblNewsCategory2.Location = new System.Drawing.Point(524, 96);
+            this.lblNewsCategory2.Name = "lblNewsCategory2";
+            this.lblNewsCategory2.Size = new System.Drawing.Size(61, 15);
+            this.lblNewsCategory2.TabIndex = 37;
+            this.lblNewsCategory2.Text = "Category: ";
+            // 
+            // cbxNewsCategory2
+            // 
+            this.cbxNewsCategory2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxNewsCategory2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxNewsCategory2.FormattingEnabled = true;
+            this.cbxNewsCategory2.Location = new System.Drawing.Point(598, 93);
+            this.cbxNewsCategory2.Name = "cbxNewsCategory2";
+            this.cbxNewsCategory2.Size = new System.Drawing.Size(182, 23);
+            this.cbxNewsCategory2.TabIndex = 36;
+            // 
+            // lblOptional2
+            // 
+            this.lblOptional2.AutoSize = true;
+            this.lblOptional2.Location = new System.Drawing.Point(244, 510);
+            this.lblOptional2.Name = "lblOptional2";
+            this.lblOptional2.Size = new System.Drawing.Size(61, 15);
+            this.lblOptional2.TabIndex = 19;
+            this.lblOptional2.Text = "(Optional)";
+            // 
+            // btnPic2_2
+            // 
+            this.btnPic2_2.Location = new System.Drawing.Point(234, 484);
+            this.btnPic2_2.Name = "btnPic2_2";
+            this.btnPic2_2.Size = new System.Drawing.Size(75, 23);
+            this.btnPic2_2.TabIndex = 20;
+            this.btnPic2_2.Text = "Upload pic";
+            this.btnPic2_2.UseVisualStyleBackColor = true;
+            // 
+            // btnPic1_2
+            // 
+            this.btnPic1_2.Location = new System.Drawing.Point(230, 173);
+            this.btnPic1_2.Name = "btnPic1_2";
+            this.btnPic1_2.Size = new System.Drawing.Size(75, 23);
+            this.btnPic1_2.TabIndex = 23;
+            this.btnPic1_2.Text = "Upload pic";
+            this.btnPic1_2.UseVisualStyleBackColor = true;
+            // 
+            // lblAuthor2
+            // 
+            this.lblAuthor2.AutoSize = true;
+            this.lblAuthor2.Location = new System.Drawing.Point(919, 96);
+            this.lblAuthor2.Name = "lblAuthor2";
+            this.lblAuthor2.Size = new System.Drawing.Size(50, 15);
+            this.lblAuthor2.TabIndex = 35;
+            this.lblAuthor2.Text = "Author: ";
+            // 
+            // lblTimeToRead2
+            // 
+            this.lblTimeToRead2.AutoSize = true;
+            this.lblTimeToRead2.Location = new System.Drawing.Point(230, 96);
+            this.lblTimeToRead2.Name = "lblTimeToRead2";
+            this.lblTimeToRead2.Size = new System.Drawing.Size(79, 15);
+            this.lblTimeToRead2.TabIndex = 34;
+            this.lblTimeToRead2.Text = "Time to read: ";
+            // 
+            // tbxTimeToRead2
+            // 
+            this.tbxTimeToRead2.Location = new System.Drawing.Point(326, 93);
+            this.tbxTimeToRead2.Name = "tbxTimeToRead2";
+            this.tbxTimeToRead2.Size = new System.Drawing.Size(100, 23);
+            this.tbxTimeToRead2.TabIndex = 33;
+            // 
+            // pbxAdRight2
+            // 
+            this.pbxAdRight2.Image = global::NewsDesktop.Properties.Resources.ad1;
+            this.pbxAdRight2.Location = new System.Drawing.Point(1256, 0);
+            this.pbxAdRight2.Name = "pbxAdRight2";
+            this.pbxAdRight2.Size = new System.Drawing.Size(224, 853);
+            this.pbxAdRight2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxAdRight2.TabIndex = 32;
+            this.pbxAdRight2.TabStop = false;
+            // 
+            // pbxAdLeft2
+            // 
+            this.pbxAdLeft2.Image = global::NewsDesktop.Properties.Resources.ad21;
+            this.pbxAdLeft2.Location = new System.Drawing.Point(0, 0);
+            this.pbxAdLeft2.Name = "pbxAdLeft2";
+            this.pbxAdLeft2.Size = new System.Drawing.Size(224, 853);
+            this.pbxAdLeft2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxAdLeft2.TabIndex = 31;
+            this.pbxAdLeft2.TabStop = false;
+            // 
+            // lbxTags2
+            // 
+            this.lbxTags2.FormattingEnabled = true;
+            this.lbxTags2.ItemHeight = 15;
+            this.lbxTags2.Location = new System.Drawing.Point(230, 795);
+            this.lbxTags2.Name = "lbxTags2";
+            this.lbxTags2.Size = new System.Drawing.Size(269, 49);
+            this.lbxTags2.TabIndex = 30;
+            // 
+            // btnAdd2
+            // 
+            this.btnAdd2.Location = new System.Drawing.Point(859, 804);
+            this.btnAdd2.Name = "btnAdd2";
+            this.btnAdd2.Size = new System.Drawing.Size(110, 36);
+            this.btnAdd2.TabIndex = 29;
+            this.btnAdd2.Text = "Add";
+            this.btnAdd2.UseVisualStyleBackColor = true;
+            // 
+            // btnClear2
+            // 
+            this.btnClear2.Location = new System.Drawing.Point(743, 804);
+            this.btnClear2.Name = "btnClear2";
+            this.btnClear2.Size = new System.Drawing.Size(110, 36);
+            this.btnClear2.TabIndex = 28;
+            this.btnClear2.Text = "Clear fields";
+            this.btnClear2.UseVisualStyleBackColor = true;
+            // 
+            // pbxPicture2_2
+            // 
+            this.pbxPicture2_2.Location = new System.Drawing.Point(326, 484);
+            this.pbxPicture2_2.Name = "pbxPicture2_2";
+            this.pbxPicture2_2.Size = new System.Drawing.Size(825, 184);
+            this.pbxPicture2_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPicture2_2.TabIndex = 27;
+            this.pbxPicture2_2.TabStop = false;
+            // 
+            // pbxPicture1_2
+            // 
+            this.pbxPicture1_2.Location = new System.Drawing.Point(326, 173);
+            this.pbxPicture1_2.Name = "pbxPicture1_2";
+            this.pbxPicture1_2.Size = new System.Drawing.Size(825, 184);
+            this.pbxPicture1_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPicture1_2.TabIndex = 26;
+            this.pbxPicture1_2.TabStop = false;
+            // 
+            // tbxText2_2
+            // 
+            this.tbxText2_2.Location = new System.Drawing.Point(230, 674);
+            this.tbxText2_2.Multiline = true;
+            this.tbxText2_2.Name = "tbxText2_2";
+            this.tbxText2_2.Size = new System.Drawing.Size(1020, 115);
+            this.tbxText2_2.TabIndex = 25;
+            // 
+            // tbxText1_2
+            // 
+            this.tbxText1_2.Location = new System.Drawing.Point(230, 363);
+            this.tbxText1_2.Multiline = true;
+            this.tbxText1_2.Name = "tbxText1_2";
+            this.tbxText1_2.Size = new System.Drawing.Size(1020, 115);
+            this.tbxText1_2.TabIndex = 24;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox4.Location = new System.Drawing.Point(230, 128);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(1020, 33);
+            this.textBox4.TabIndex = 22;
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbxAuthor2
+            // 
+            this.tbxAuthor2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbxAuthor2.Location = new System.Drawing.Point(977, 93);
+            this.tbxAuthor2.Name = "tbxAuthor2";
+            this.tbxAuthor2.ReadOnly = true;
+            this.tbxAuthor2.Size = new System.Drawing.Size(174, 29);
+            this.tbxAuthor2.TabIndex = 21;
+            // 
+            // tbxTitle2
+            // 
+            this.tbxTitle2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tbxTitle2.ForeColor = System.Drawing.Color.Red;
+            this.tbxTitle2.Location = new System.Drawing.Point(230, 16);
+            this.tbxTitle2.Name = "tbxTitle2";
+            this.tbxTitle2.Size = new System.Drawing.Size(1020, 50);
+            this.tbxTitle2.TabIndex = 18;
+            this.tbxTitle2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblNewsCategory3
+            // 
+            this.lblNewsCategory3.AutoSize = true;
+            this.lblNewsCategory3.Location = new System.Drawing.Point(524, 96);
+            this.lblNewsCategory3.Name = "lblNewsCategory3";
+            this.lblNewsCategory3.Size = new System.Drawing.Size(61, 15);
+            this.lblNewsCategory3.TabIndex = 37;
+            this.lblNewsCategory3.Text = "Category: ";
+            // 
+            // cbxNewsCategory3
+            // 
+            this.cbxNewsCategory3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxNewsCategory3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxNewsCategory3.FormattingEnabled = true;
+            this.cbxNewsCategory3.Location = new System.Drawing.Point(598, 93);
+            this.cbxNewsCategory3.Name = "cbxNewsCategory3";
+            this.cbxNewsCategory3.Size = new System.Drawing.Size(182, 23);
+            this.cbxNewsCategory3.TabIndex = 36;
+            // 
+            // btnPic1_3
+            // 
+            this.btnPic1_3.Location = new System.Drawing.Point(230, 173);
+            this.btnPic1_3.Name = "btnPic1_3";
+            this.btnPic1_3.Size = new System.Drawing.Size(75, 23);
+            this.btnPic1_3.TabIndex = 23;
+            this.btnPic1_3.Text = "Upload pic";
+            this.btnPic1_3.UseVisualStyleBackColor = true;
+            // 
+            // lblAuthor3
+            // 
+            this.lblAuthor3.AutoSize = true;
+            this.lblAuthor3.Location = new System.Drawing.Point(919, 96);
+            this.lblAuthor3.Name = "lblAuthor3";
+            this.lblAuthor3.Size = new System.Drawing.Size(50, 15);
+            this.lblAuthor3.TabIndex = 35;
+            this.lblAuthor3.Text = "Author: ";
+            // 
+            // lblTimeToRead3
+            // 
+            this.lblTimeToRead3.AutoSize = true;
+            this.lblTimeToRead3.Location = new System.Drawing.Point(230, 96);
+            this.lblTimeToRead3.Name = "lblTimeToRead3";
+            this.lblTimeToRead3.Size = new System.Drawing.Size(79, 15);
+            this.lblTimeToRead3.TabIndex = 34;
+            this.lblTimeToRead3.Text = "Time to read: ";
+            // 
+            // tbxTimeToRead3
+            // 
+            this.tbxTimeToRead3.Location = new System.Drawing.Point(326, 93);
+            this.tbxTimeToRead3.Name = "tbxTimeToRead3";
+            this.tbxTimeToRead3.Size = new System.Drawing.Size(100, 23);
+            this.tbxTimeToRead3.TabIndex = 33;
+            // 
+            // pbxAdRight3
+            // 
+            this.pbxAdRight3.Image = global::NewsDesktop.Properties.Resources.ad1;
+            this.pbxAdRight3.Location = new System.Drawing.Point(1256, 0);
+            this.pbxAdRight3.Name = "pbxAdRight3";
+            this.pbxAdRight3.Size = new System.Drawing.Size(224, 853);
+            this.pbxAdRight3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxAdRight3.TabIndex = 32;
+            this.pbxAdRight3.TabStop = false;
+            // 
+            // pbxAdLeft3
+            // 
+            this.pbxAdLeft3.Image = global::NewsDesktop.Properties.Resources.ad21;
+            this.pbxAdLeft3.Location = new System.Drawing.Point(0, 0);
+            this.pbxAdLeft3.Name = "pbxAdLeft3";
+            this.pbxAdLeft3.Size = new System.Drawing.Size(224, 853);
+            this.pbxAdLeft3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxAdLeft3.TabIndex = 31;
+            this.pbxAdLeft3.TabStop = false;
+            // 
+            // lbxTags3
+            // 
+            this.lbxTags3.FormattingEnabled = true;
+            this.lbxTags3.ItemHeight = 15;
+            this.lbxTags3.Location = new System.Drawing.Point(230, 795);
+            this.lbxTags3.Name = "lbxTags3";
+            this.lbxTags3.Size = new System.Drawing.Size(269, 49);
+            this.lbxTags3.TabIndex = 30;
+            // 
+            // btnAdd3
+            // 
+            this.btnAdd3.Location = new System.Drawing.Point(859, 804);
+            this.btnAdd3.Name = "btnAdd3";
+            this.btnAdd3.Size = new System.Drawing.Size(110, 36);
+            this.btnAdd3.TabIndex = 29;
+            this.btnAdd3.Text = "Add";
+            this.btnAdd3.UseVisualStyleBackColor = true;
+            // 
+            // btnClear3
+            // 
+            this.btnClear3.Location = new System.Drawing.Point(743, 804);
+            this.btnClear3.Name = "btnClear3";
+            this.btnClear3.Size = new System.Drawing.Size(110, 36);
+            this.btnClear3.TabIndex = 28;
+            this.btnClear3.Text = "Clear fields";
+            this.btnClear3.UseVisualStyleBackColor = true;
+            // 
+            // pbxPicture1_3
+            // 
+            this.pbxPicture1_3.Location = new System.Drawing.Point(326, 173);
+            this.pbxPicture1_3.Name = "pbxPicture1_3";
+            this.pbxPicture1_3.Size = new System.Drawing.Size(825, 184);
+            this.pbxPicture1_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPicture1_3.TabIndex = 26;
+            this.pbxPicture1_3.TabStop = false;
+            // 
+            // tbxText2_3
+            // 
+            this.tbxText2_3.Location = new System.Drawing.Point(230, 484);
+            this.tbxText2_3.Multiline = true;
+            this.tbxText2_3.Name = "tbxText2_3";
+            this.tbxText2_3.Size = new System.Drawing.Size(1020, 305);
+            this.tbxText2_3.TabIndex = 25;
+            // 
+            // tbxText1_3
+            // 
+            this.tbxText1_3.Location = new System.Drawing.Point(230, 363);
+            this.tbxText1_3.Multiline = true;
+            this.tbxText1_3.Name = "tbxText1_3";
+            this.tbxText1_3.Size = new System.Drawing.Size(1020, 115);
+            this.tbxText1_3.TabIndex = 24;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox10.Location = new System.Drawing.Point(230, 128);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(1020, 33);
+            this.textBox10.TabIndex = 22;
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbxAuthor3
+            // 
+            this.tbxAuthor3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbxAuthor3.Location = new System.Drawing.Point(977, 93);
+            this.tbxAuthor3.Name = "tbxAuthor3";
+            this.tbxAuthor3.ReadOnly = true;
+            this.tbxAuthor3.Size = new System.Drawing.Size(174, 29);
+            this.tbxAuthor3.TabIndex = 21;
+            // 
+            // tbxTitle3
+            // 
+            this.tbxTitle3.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbxTitle3.Location = new System.Drawing.Point(230, 16);
+            this.tbxTitle3.Name = "tbxTitle3";
+            this.tbxTitle3.Size = new System.Drawing.Size(1020, 50);
+            this.tbxTitle3.TabIndex = 18;
+            this.tbxTitle3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // AddNewsForm
             // 
@@ -288,6 +740,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1)).EndInit();
+            this.tbpBreakingNews.ResumeLayout(false);
+            this.tbpBreakingNews.PerformLayout();
+            this.tbpInfoNews.ResumeLayout(false);
+            this.tbpInfoNews.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPicture2_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1_3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -315,5 +778,45 @@
         private Label lblAuthor;
         private Button btnPic2;
         private Button btnPic1;
+        private Label lblOptional;
+        private Label lblNewsCategory;
+        private ComboBox cbxNewsCategory;
+        private Label lblNewsCategory2;
+        private ComboBox cbxNewsCategory2;
+        private Label lblOptional2;
+        private Button btnPic2_2;
+        private Button btnPic1_2;
+        private Label lblAuthor2;
+        private Label lblTimeToRead2;
+        private TextBox tbxTimeToRead2;
+        private PictureBox pbxAdRight2;
+        private PictureBox pbxAdLeft2;
+        private ListBox lbxTags2;
+        private Button btnAdd2;
+        private Button btnClear2;
+        private PictureBox pbxPicture2_2;
+        private PictureBox pbxPicture1_2;
+        private TextBox tbxText2_2;
+        private TextBox tbxText1_2;
+        private TextBox textBox4;
+        private TextBox tbxAuthor2;
+        private TextBox tbxTitle2;
+        private Label lblNewsCategory3;
+        private ComboBox cbxNewsCategory3;
+        private Button btnPic1_3;
+        private Label lblAuthor3;
+        private Label lblTimeToRead3;
+        private TextBox tbxTimeToRead3;
+        private PictureBox pbxAdRight3;
+        private PictureBox pbxAdLeft3;
+        private ListBox lbxTags3;
+        private Button btnAdd3;
+        private Button btnClear3;
+        private PictureBox pbxPicture1_3;
+        private TextBox tbxText2_3;
+        private TextBox tbxText1_3;
+        private TextBox textBox10;
+        private TextBox tbxAuthor3;
+        private TextBox tbxTitle3;
     }
 }

@@ -1,8 +1,10 @@
-﻿using LogicLayer.DALExceptions;
+﻿using FluentValidation.Results;
+using LogicLayer.DALExceptions;
 using LogicLayer.Enums;
 using LogicLayer.Interfaces;
 using LogicLayer.LLExceptions;
 using LogicLayer.Models.News;
+using LogicLayer.Models.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +37,19 @@ namespace LogicLayer.Services
                 {
                     throw new NewsOperationException("News with this id already exists!");
                 }
-                _newsDal.AddNewsToCatalogue(newsToAdd, newsCatalogue);
-                newsCatalogue.AddNews(newsToAdd);
+                ValidateNews validator = new ValidateNews();
+                ValidationResult result = validator.Validate(newsToAdd);
+                if (result.Errors.Count == 0)
+                {
+                    _newsDal.AddNewsToCatalogue(newsToAdd, newsCatalogue);
+                    newsCatalogue.AddNews(newsToAdd);
+                }
+                else
+                {
+                    string message = string.Join(Environment.NewLine, result.Errors);
+                    throw new NewsOperationException(message);
+                }
+                
             }
             catch(DalException ex) {
                 throw new TechincalException(ex.Message);
@@ -95,8 +108,18 @@ namespace LogicLayer.Services
                 {
                     throw new NewsOperationException("News with this id does not exist!");
                 }
-                _newsDal.EditNewsFromCatalogue(updatedNews, newsCatalogue);
-                newsCatalogue.EditNews(updatedNews);
+                ValidateNews validator = new ValidateNews();
+                ValidationResult result = validator.Validate(updatedNews);
+                if (result.Errors.Count == 0)
+                {
+                    _newsDal.EditNewsFromCatalogue(updatedNews, newsCatalogue);
+                    newsCatalogue.EditNews(updatedNews);
+                }
+                else
+                {
+                    string message = string.Join(Environment.NewLine, result.Errors);
+                    throw new NewsOperationException(message);
+                }
             }
             catch (DalException ex)
             {
@@ -176,6 +199,17 @@ namespace LogicLayer.Services
             catch (DalException ex)
             {
                 throw new TechincalException(ex.Message);
+            }
+        }
+        public List<NewsCategory> GetNewsCategories()
+        {
+            try
+            {
+                return _newsDal.GetNewsCategories();
+            }
+            catch (Exception)
+            {
+                return new List<NewsCategory>();
             }
         }
     }
