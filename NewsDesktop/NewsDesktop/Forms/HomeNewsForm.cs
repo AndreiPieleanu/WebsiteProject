@@ -61,7 +61,7 @@ namespace NewsDesktop.Forms
 
         private void bntAddNews_Click(object sender, EventArgs e)
         {
-            AddNewsForm addNewsForm = new AddNewsForm(this);
+            AddNewsForm addNewsForm = new AddNewsForm(this, _newsCatalogue);
             Hide();
             addNewsForm.Show();
         }

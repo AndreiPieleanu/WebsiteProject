@@ -86,5 +86,21 @@ namespace DataLayer.DALs
         {
             return;
         }
+        public List<NewsCategory> GetNewsCategories()
+        {
+            return new List<NewsCategory>()
+            {
+                NewsCategory.War,
+                NewsCategory.Politics,
+                NewsCategory.Education,
+                NewsCategory.Health,
+                NewsCategory.Environment,
+                NewsCategory.Economy,
+                NewsCategory.Entertainment,
+                NewsCategory.Sport,
+                NewsCategory.Cancan,
+                NewsCategory.Science,
+            };
+        }
     }
 }
