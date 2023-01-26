@@ -30,6 +30,9 @@
         {
             this.tbcNews = new System.Windows.Forms.TabControl();
             this.tbpNormalNews = new System.Windows.Forms.TabPage();
+            this.tbxTag = new System.Windows.Forms.TextBox();
+            this.btnRemoveTag = new System.Windows.Forms.Button();
+            this.btnAddTag = new System.Windows.Forms.Button();
             this.lblNewsCategory = new System.Windows.Forms.Label();
             this.cbxNewsCategory = new System.Windows.Forms.ComboBox();
             this.lblOptional = new System.Windows.Forms.Label();
@@ -51,7 +54,6 @@
             this.tbxAuthor = new System.Windows.Forms.TextBox();
             this.tbxTitle = new System.Windows.Forms.TextBox();
             this.tbpBreakingNews = new System.Windows.Forms.TabPage();
-            this.tbpInfoNews = new System.Windows.Forms.TabPage();
             this.lblNewsCategory2 = new System.Windows.Forms.Label();
             this.cbxNewsCategory2 = new System.Windows.Forms.ComboBox();
             this.lblOptional2 = new System.Windows.Forms.Label();
@@ -69,9 +71,10 @@
             this.pbxPicture1_2 = new System.Windows.Forms.PictureBox();
             this.tbxText2_2 = new System.Windows.Forms.TextBox();
             this.tbxText1_2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbxSubtitle2 = new System.Windows.Forms.TextBox();
             this.tbxAuthor2 = new System.Windows.Forms.TextBox();
             this.tbxTitle2 = new System.Windows.Forms.TextBox();
+            this.tbpInfoNews = new System.Windows.Forms.TabPage();
             this.lblNewsCategory3 = new System.Windows.Forms.Label();
             this.cbxNewsCategory3 = new System.Windows.Forms.ComboBox();
             this.btnPic1_3 = new System.Windows.Forms.Button();
@@ -86,9 +89,15 @@
             this.pbxPicture1_3 = new System.Windows.Forms.PictureBox();
             this.tbxText2_3 = new System.Windows.Forms.TextBox();
             this.tbxText1_3 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.tbxSubtitle3 = new System.Windows.Forms.TextBox();
             this.tbxAuthor3 = new System.Windows.Forms.TextBox();
             this.tbxTitle3 = new System.Windows.Forms.TextBox();
+            this.tbxTag2 = new System.Windows.Forms.TextBox();
+            this.btnRemoveTag2 = new System.Windows.Forms.Button();
+            this.btnAddTag2 = new System.Windows.Forms.Button();
+            this.tbxTag3 = new System.Windows.Forms.TextBox();
+            this.btnRemoveTag3 = new System.Windows.Forms.Button();
+            this.btnAddTag3 = new System.Windows.Forms.Button();
             this.tbcNews.SuspendLayout();
             this.tbpNormalNews.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight)).BeginInit();
@@ -96,11 +105,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1)).BeginInit();
             this.tbpBreakingNews.SuspendLayout();
-            this.tbpInfoNews.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture2_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1_2)).BeginInit();
+            this.tbpInfoNews.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1_3)).BeginInit();
@@ -119,6 +128,9 @@
             // 
             // tbpNormalNews
             // 
+            this.tbpNormalNews.Controls.Add(this.tbxTag);
+            this.tbpNormalNews.Controls.Add(this.btnRemoveTag);
+            this.tbpNormalNews.Controls.Add(this.btnAddTag);
             this.tbpNormalNews.Controls.Add(this.lblNewsCategory);
             this.tbpNormalNews.Controls.Add(this.cbxNewsCategory);
             this.tbpNormalNews.Controls.Add(this.lblOptional);
@@ -146,6 +158,33 @@
             this.tbpNormalNews.TabIndex = 0;
             this.tbpNormalNews.Text = "Normal news";
             this.tbpNormalNews.UseVisualStyleBackColor = true;
+            // 
+            // tbxTag
+            // 
+            this.tbxTag.Location = new System.Drawing.Point(505, 795);
+            this.tbxTag.Name = "tbxTag";
+            this.tbxTag.Size = new System.Drawing.Size(168, 23);
+            this.tbxTag.TabIndex = 20;
+            // 
+            // btnRemoveTag
+            // 
+            this.btnRemoveTag.Location = new System.Drawing.Point(598, 817);
+            this.btnRemoveTag.Name = "btnRemoveTag";
+            this.btnRemoveTag.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoveTag.TabIndex = 19;
+            this.btnRemoveTag.Text = "Remove";
+            this.btnRemoveTag.UseVisualStyleBackColor = true;
+            this.btnRemoveTag.Click += new System.EventHandler(this.btnRemoveTag_Click);
+            // 
+            // btnAddTag
+            // 
+            this.btnAddTag.Location = new System.Drawing.Point(505, 817);
+            this.btnAddTag.Name = "btnAddTag";
+            this.btnAddTag.Size = new System.Drawing.Size(75, 23);
+            this.btnAddTag.TabIndex = 18;
+            this.btnAddTag.Text = "Add";
+            this.btnAddTag.UseVisualStyleBackColor = true;
+            this.btnAddTag.Click += new System.EventHandler(this.btnAddTag_Click);
             // 
             // lblNewsCategory
             // 
@@ -334,6 +373,9 @@
             // 
             // tbpBreakingNews
             // 
+            this.tbpBreakingNews.Controls.Add(this.tbxTag2);
+            this.tbpBreakingNews.Controls.Add(this.btnRemoveTag2);
+            this.tbpBreakingNews.Controls.Add(this.btnAddTag2);
             this.tbpBreakingNews.Controls.Add(this.lblNewsCategory2);
             this.tbpBreakingNews.Controls.Add(this.cbxNewsCategory2);
             this.tbpBreakingNews.Controls.Add(this.lblOptional2);
@@ -351,7 +393,7 @@
             this.tbpBreakingNews.Controls.Add(this.pbxPicture1_2);
             this.tbpBreakingNews.Controls.Add(this.tbxText2_2);
             this.tbpBreakingNews.Controls.Add(this.tbxText1_2);
-            this.tbpBreakingNews.Controls.Add(this.textBox4);
+            this.tbpBreakingNews.Controls.Add(this.tbxSubtitle2);
             this.tbpBreakingNews.Controls.Add(this.tbxAuthor2);
             this.tbpBreakingNews.Controls.Add(this.tbxTitle2);
             this.tbpBreakingNews.Location = new System.Drawing.Point(4, 24);
@@ -361,33 +403,6 @@
             this.tbpBreakingNews.TabIndex = 1;
             this.tbpBreakingNews.Text = "Breaking news";
             this.tbpBreakingNews.UseVisualStyleBackColor = true;
-            // 
-            // tbpInfoNews
-            // 
-            this.tbpInfoNews.Controls.Add(this.lblNewsCategory3);
-            this.tbpInfoNews.Controls.Add(this.cbxNewsCategory3);
-            this.tbpInfoNews.Controls.Add(this.btnPic1_3);
-            this.tbpInfoNews.Controls.Add(this.lblAuthor3);
-            this.tbpInfoNews.Controls.Add(this.lblTimeToRead3);
-            this.tbpInfoNews.Controls.Add(this.tbxTimeToRead3);
-            this.tbpInfoNews.Controls.Add(this.pbxAdRight3);
-            this.tbpInfoNews.Controls.Add(this.pbxAdLeft3);
-            this.tbpInfoNews.Controls.Add(this.lbxTags3);
-            this.tbpInfoNews.Controls.Add(this.btnAdd3);
-            this.tbpInfoNews.Controls.Add(this.btnClear3);
-            this.tbpInfoNews.Controls.Add(this.pbxPicture1_3);
-            this.tbpInfoNews.Controls.Add(this.tbxText2_3);
-            this.tbpInfoNews.Controls.Add(this.tbxText1_3);
-            this.tbpInfoNews.Controls.Add(this.textBox10);
-            this.tbpInfoNews.Controls.Add(this.tbxAuthor3);
-            this.tbpInfoNews.Controls.Add(this.tbxTitle3);
-            this.tbpInfoNews.Location = new System.Drawing.Point(4, 24);
-            this.tbpInfoNews.Name = "tbpInfoNews";
-            this.tbpInfoNews.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpInfoNews.Size = new System.Drawing.Size(1480, 853);
-            this.tbpInfoNews.TabIndex = 2;
-            this.tbpInfoNews.Text = "Did you know?";
-            this.tbpInfoNews.UseVisualStyleBackColor = true;
             // 
             // lblNewsCategory2
             // 
@@ -407,6 +422,7 @@
             this.cbxNewsCategory2.Name = "cbxNewsCategory2";
             this.cbxNewsCategory2.Size = new System.Drawing.Size(182, 23);
             this.cbxNewsCategory2.TabIndex = 36;
+            this.cbxNewsCategory2.SelectedIndexChanged += new System.EventHandler(this.cbxNewsCategory2_SelectedIndexChanged);
             // 
             // lblOptional2
             // 
@@ -425,6 +441,7 @@
             this.btnPic2_2.TabIndex = 20;
             this.btnPic2_2.Text = "Upload pic";
             this.btnPic2_2.UseVisualStyleBackColor = true;
+            this.btnPic2_2.Click += new System.EventHandler(this.btnPic2_2_Click);
             // 
             // btnPic1_2
             // 
@@ -434,6 +451,7 @@
             this.btnPic1_2.TabIndex = 23;
             this.btnPic1_2.Text = "Upload pic";
             this.btnPic1_2.UseVisualStyleBackColor = true;
+            this.btnPic1_2.Click += new System.EventHandler(this.btnPic1_2_Click);
             // 
             // lblAuthor2
             // 
@@ -497,6 +515,7 @@
             this.btnAdd2.TabIndex = 29;
             this.btnAdd2.Text = "Add";
             this.btnAdd2.UseVisualStyleBackColor = true;
+            this.btnAdd2.Click += new System.EventHandler(this.btnAdd2_Click);
             // 
             // btnClear2
             // 
@@ -506,6 +525,7 @@
             this.btnClear2.TabIndex = 28;
             this.btnClear2.Text = "Clear fields";
             this.btnClear2.UseVisualStyleBackColor = true;
+            this.btnClear2.Click += new System.EventHandler(this.btnClear2_Click);
             // 
             // pbxPicture2_2
             // 
@@ -541,15 +561,15 @@
             this.tbxText1_2.Size = new System.Drawing.Size(1020, 115);
             this.tbxText1_2.TabIndex = 24;
             // 
-            // textBox4
+            // tbxSubtitle2
             // 
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox4.Location = new System.Drawing.Point(230, 128);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(1020, 33);
-            this.textBox4.TabIndex = 22;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbxSubtitle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tbxSubtitle2.Location = new System.Drawing.Point(230, 128);
+            this.tbxSubtitle2.Multiline = true;
+            this.tbxSubtitle2.Name = "tbxSubtitle2";
+            this.tbxSubtitle2.Size = new System.Drawing.Size(1020, 33);
+            this.tbxSubtitle2.TabIndex = 22;
+            this.tbxSubtitle2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbxAuthor2
             // 
@@ -570,6 +590,36 @@
             this.tbxTitle2.TabIndex = 18;
             this.tbxTitle2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // tbpInfoNews
+            // 
+            this.tbpInfoNews.Controls.Add(this.tbxTag3);
+            this.tbpInfoNews.Controls.Add(this.btnRemoveTag3);
+            this.tbpInfoNews.Controls.Add(this.btnAddTag3);
+            this.tbpInfoNews.Controls.Add(this.lblNewsCategory3);
+            this.tbpInfoNews.Controls.Add(this.cbxNewsCategory3);
+            this.tbpInfoNews.Controls.Add(this.btnPic1_3);
+            this.tbpInfoNews.Controls.Add(this.lblAuthor3);
+            this.tbpInfoNews.Controls.Add(this.lblTimeToRead3);
+            this.tbpInfoNews.Controls.Add(this.tbxTimeToRead3);
+            this.tbpInfoNews.Controls.Add(this.pbxAdRight3);
+            this.tbpInfoNews.Controls.Add(this.pbxAdLeft3);
+            this.tbpInfoNews.Controls.Add(this.lbxTags3);
+            this.tbpInfoNews.Controls.Add(this.btnAdd3);
+            this.tbpInfoNews.Controls.Add(this.btnClear3);
+            this.tbpInfoNews.Controls.Add(this.pbxPicture1_3);
+            this.tbpInfoNews.Controls.Add(this.tbxText2_3);
+            this.tbpInfoNews.Controls.Add(this.tbxText1_3);
+            this.tbpInfoNews.Controls.Add(this.tbxSubtitle3);
+            this.tbpInfoNews.Controls.Add(this.tbxAuthor3);
+            this.tbpInfoNews.Controls.Add(this.tbxTitle3);
+            this.tbpInfoNews.Location = new System.Drawing.Point(4, 24);
+            this.tbpInfoNews.Name = "tbpInfoNews";
+            this.tbpInfoNews.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpInfoNews.Size = new System.Drawing.Size(1480, 853);
+            this.tbpInfoNews.TabIndex = 2;
+            this.tbpInfoNews.Text = "Did you know?";
+            this.tbpInfoNews.UseVisualStyleBackColor = true;
+            // 
             // lblNewsCategory3
             // 
             this.lblNewsCategory3.AutoSize = true;
@@ -588,6 +638,7 @@
             this.cbxNewsCategory3.Name = "cbxNewsCategory3";
             this.cbxNewsCategory3.Size = new System.Drawing.Size(182, 23);
             this.cbxNewsCategory3.TabIndex = 36;
+            this.cbxNewsCategory3.SelectedIndexChanged += new System.EventHandler(this.cbxNewsCategory3_SelectedIndexChanged);
             // 
             // btnPic1_3
             // 
@@ -597,6 +648,7 @@
             this.btnPic1_3.TabIndex = 23;
             this.btnPic1_3.Text = "Upload pic";
             this.btnPic1_3.UseVisualStyleBackColor = true;
+            this.btnPic1_3.Click += new System.EventHandler(this.btnPic1_3_Click);
             // 
             // lblAuthor3
             // 
@@ -660,6 +712,7 @@
             this.btnAdd3.TabIndex = 29;
             this.btnAdd3.Text = "Add";
             this.btnAdd3.UseVisualStyleBackColor = true;
+            this.btnAdd3.Click += new System.EventHandler(this.btnAdd3_Click);
             // 
             // btnClear3
             // 
@@ -669,6 +722,7 @@
             this.btnClear3.TabIndex = 28;
             this.btnClear3.Text = "Clear fields";
             this.btnClear3.UseVisualStyleBackColor = true;
+            this.btnClear3.Click += new System.EventHandler(this.btnClear3_Click);
             // 
             // pbxPicture1_3
             // 
@@ -695,15 +749,15 @@
             this.tbxText1_3.Size = new System.Drawing.Size(1020, 115);
             this.tbxText1_3.TabIndex = 24;
             // 
-            // textBox10
+            // tbxSubtitle3
             // 
-            this.textBox10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox10.Location = new System.Drawing.Point(230, 128);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(1020, 33);
-            this.textBox10.TabIndex = 22;
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbxSubtitle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbxSubtitle3.Location = new System.Drawing.Point(230, 128);
+            this.tbxSubtitle3.Multiline = true;
+            this.tbxSubtitle3.Name = "tbxSubtitle3";
+            this.tbxSubtitle3.Size = new System.Drawing.Size(1020, 33);
+            this.tbxSubtitle3.TabIndex = 22;
+            this.tbxSubtitle3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbxAuthor3
             // 
@@ -722,6 +776,60 @@
             this.tbxTitle3.Size = new System.Drawing.Size(1020, 50);
             this.tbxTitle3.TabIndex = 18;
             this.tbxTitle3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbxTag2
+            // 
+            this.tbxTag2.Location = new System.Drawing.Point(505, 795);
+            this.tbxTag2.Name = "tbxTag2";
+            this.tbxTag2.Size = new System.Drawing.Size(168, 23);
+            this.tbxTag2.TabIndex = 40;
+            // 
+            // btnRemoveTag2
+            // 
+            this.btnRemoveTag2.Location = new System.Drawing.Point(598, 817);
+            this.btnRemoveTag2.Name = "btnRemoveTag2";
+            this.btnRemoveTag2.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoveTag2.TabIndex = 39;
+            this.btnRemoveTag2.Text = "Remove";
+            this.btnRemoveTag2.UseVisualStyleBackColor = true;
+            this.btnRemoveTag2.Click += new System.EventHandler(this.btnRemoveTag2_Click);
+            // 
+            // btnAddTag2
+            // 
+            this.btnAddTag2.Location = new System.Drawing.Point(505, 817);
+            this.btnAddTag2.Name = "btnAddTag2";
+            this.btnAddTag2.Size = new System.Drawing.Size(75, 23);
+            this.btnAddTag2.TabIndex = 38;
+            this.btnAddTag2.Text = "Add";
+            this.btnAddTag2.UseVisualStyleBackColor = true;
+            this.btnAddTag2.Click += new System.EventHandler(this.btnAddTag2_Click);
+            // 
+            // tbxTag3
+            // 
+            this.tbxTag3.Location = new System.Drawing.Point(505, 795);
+            this.tbxTag3.Name = "tbxTag3";
+            this.tbxTag3.Size = new System.Drawing.Size(168, 23);
+            this.tbxTag3.TabIndex = 40;
+            // 
+            // btnRemoveTag3
+            // 
+            this.btnRemoveTag3.Location = new System.Drawing.Point(598, 817);
+            this.btnRemoveTag3.Name = "btnRemoveTag3";
+            this.btnRemoveTag3.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoveTag3.TabIndex = 39;
+            this.btnRemoveTag3.Text = "Remove";
+            this.btnRemoveTag3.UseVisualStyleBackColor = true;
+            this.btnRemoveTag3.Click += new System.EventHandler(this.btnRemoveTag3_Click);
+            // 
+            // btnAddTag3
+            // 
+            this.btnAddTag3.Location = new System.Drawing.Point(505, 817);
+            this.btnAddTag3.Name = "btnAddTag3";
+            this.btnAddTag3.Size = new System.Drawing.Size(75, 23);
+            this.btnAddTag3.TabIndex = 38;
+            this.btnAddTag3.Text = "Add";
+            this.btnAddTag3.UseVisualStyleBackColor = true;
+            this.btnAddTag3.Click += new System.EventHandler(this.btnAddTag3_Click);
             // 
             // AddNewsForm
             // 
@@ -742,12 +850,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1)).EndInit();
             this.tbpBreakingNews.ResumeLayout(false);
             this.tbpBreakingNews.PerformLayout();
-            this.tbpInfoNews.ResumeLayout(false);
-            this.tbpInfoNews.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture2_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1_2)).EndInit();
+            this.tbpInfoNews.ResumeLayout(false);
+            this.tbpInfoNews.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdRight3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdLeft3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPicture1_3)).EndInit();
@@ -798,7 +906,7 @@
         private PictureBox pbxPicture1_2;
         private TextBox tbxText2_2;
         private TextBox tbxText1_2;
-        private TextBox textBox4;
+        private TextBox tbxSubtitle2;
         private TextBox tbxAuthor2;
         private TextBox tbxTitle2;
         private Label lblNewsCategory3;
@@ -815,8 +923,17 @@
         private PictureBox pbxPicture1_3;
         private TextBox tbxText2_3;
         private TextBox tbxText1_3;
-        private TextBox textBox10;
+        private TextBox tbxSubtitle3;
         private TextBox tbxAuthor3;
         private TextBox tbxTitle3;
+        private Button btnRemoveTag;
+        private Button btnAddTag;
+        private TextBox tbxTag;
+        private TextBox tbxTag2;
+        private Button btnRemoveTag2;
+        private Button btnAddTag2;
+        private TextBox tbxTag3;
+        private Button btnRemoveTag3;
+        private Button btnAddTag3;
     }
 }
