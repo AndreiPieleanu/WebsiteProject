@@ -20,7 +20,11 @@ namespace MockDAL
         {
             return;
         }
-
+        public List<NewsCategory> Categories = new List<NewsCategory>();
+        public List<NewsCategory> GetNewsCategories()
+        {
+            return Categories;
+        }
         public void ChangeEditedDateOfNews(DateTime newEditedDate, INews news)
         {
             return;
@@ -40,12 +44,6 @@ namespace MockDAL
         {
             return NewsCatalogue;
         }
-        public NewsCatalogue GetLatestNewsCatalogue()
-        {
-            return NewsCatalogue;
-        }
-
-
         public void RemoveNewsFromCatalogue(INews newsToRemove, NewsCatalogue newsCatalogue)
         {
             return;

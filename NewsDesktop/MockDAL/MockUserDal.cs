@@ -25,13 +25,9 @@ namespace MockDAL
             return new Password();
         }
 
-        public IUser? GetUser(string email)
+        public IUser GetUser(string email)
         {
-            if (Users.Any(user => user.Credentials.Email.Equals(email)))
-            {
-                return Users.Where(user => user.Credentials.Email.Equals(email)).First();
-            }
-            return null;
+            return Users.Where(user => user.Credentials.Email.Equals(email)).First();
         }
 
         public void RegisterUser(IUser user)

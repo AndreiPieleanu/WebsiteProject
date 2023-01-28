@@ -1,6 +1,10 @@
-﻿using LogicLayer.Enums;
+﻿using FluentValidation.Results;
+using LogicLayer.DALExceptions;
+using LogicLayer.Enums;
 using LogicLayer.Interfaces;
+using LogicLayer.LLExceptions;
 using LogicLayer.Models.News;
+using LogicLayer.Models.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +26,33 @@ namespace LogicLayer.Services
         {
             try
             {
-                _newsDal.AddNewsToCatalogue(newsToAdd, newsCatalogue);
-                newsCatalogue.AddNews(newsToAdd);
+                foreach(INews currentNews in newsCatalogue.AllNews.Values)
+                {
+                    if (currentNews.Equals(newsToAdd))
+                    {
+                        throw new NewsOperationException("News that you're trying to add already exists!");
+                    }
+                }
+                if (newsCatalogue.AllNews.ContainsKey(newsToAdd.Id))
+                {
+                    throw new NewsOperationException("News with this id already exists!");
+                }
+                ValidateNews validator = new ValidateNews();
+                ValidationResult result = validator.Validate(newsToAdd);
+                if (result.Errors.Count == 0)
+                {
+                    _newsDal.AddNewsToCatalogue(newsToAdd, newsCatalogue);
+                    newsCatalogue.AddNews(newsToAdd);
+                }
+                else
+                {
+                    string message = string.Join(Environment.NewLine, result.Errors);
+                    throw new NewsOperationException(message);
+                }
+                
             }
-            catch(Exception ex) {
-                throw new Exception(ex.Message);
+            catch(DalException ex) {
+                throw new TechincalException(ex.Message);
             }
         }
 
@@ -34,12 +60,19 @@ namespace LogicLayer.Services
         {
             try
             {
+                foreach(string newsTag in news.Tags)
+                {
+                    if (newsTag.Equals(tag))
+                    {
+                        throw new NewsTagException("You already have this tag in yor news!");
+                    }
+                }
                 _tagDal.AddTagToNews(tag, news);
                 news.AddTag(tag);
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
             }
         }
 
@@ -47,12 +80,16 @@ namespace LogicLayer.Services
         {
             try
             {
+                if(news.EditedDate == newEditedDate)
+                {
+                    throw new InvalidDateException("Edited date cannot be the same as current edited date!");
+                }
                 _newsDal.ChangeEditedDateOfNews(newEditedDate, news);
                 news.ChangeEditedDate(newEditedDate);
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
             }
         }
 
@@ -60,12 +97,33 @@ namespace LogicLayer.Services
         {
             try
             {
-                _newsDal.EditNewsFromCatalogue(updatedNews, newsCatalogue);
-                newsCatalogue.EditNews(updatedNews);
+                foreach (INews currentNews in newsCatalogue.AllNews.Values)
+                {
+                    if (currentNews.Equals(updatedNews))
+                    {
+                        throw new NewsOperationException("News with the current edited data already exists!");
+                    }
+                }
+                if (!newsCatalogue.AllNews.ContainsKey(updatedNews.Id))
+                {
+                    throw new NewsOperationException("News with this id does not exist!");
+                }
+                ValidateNews validator = new ValidateNews();
+                ValidationResult result = validator.Validate(updatedNews);
+                if (result.Errors.Count == 0)
+                {
+                    _newsDal.EditNewsFromCatalogue(updatedNews, newsCatalogue);
+                    newsCatalogue.EditNews(updatedNews);
+                }
+                else
+                {
+                    string message = string.Join(Environment.NewLine, result.Errors);
+                    throw new NewsOperationException(message);
+                }
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
             }
         }
 
@@ -73,12 +131,19 @@ namespace LogicLayer.Services
         {
             try
             {
+                foreach (string newsTag in news.Tags)
+                {
+                    if (newsTag.Equals(tag))
+                    {
+                        throw new NewsTagException("You already have this tag in yor news!");
+                    }
+                }
                 _tagDal.EditTagOfNews(tag, news);
                 news.EditTag(tag);
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
             }
         }
 
@@ -88,20 +153,9 @@ namespace LogicLayer.Services
             {
                 return _newsDal.GetNewsCatalogue();
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
-            }
-        }
-        public NewsCatalogue GetLatestNewsCatalogue()
-        {
-            try
-            {
-                return _newsDal.GetLatestNewsCatalogue();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
             }
         }
 
@@ -109,12 +163,16 @@ namespace LogicLayer.Services
         {
             try
             {
+                if (!newsCatalogue.AllNews.ContainsKey(newsToRemove.Id))
+                {
+                    throw new NewsOperationException("News that you are trying deleting does not exist anymore in the catalogue!");
+                }
                 _newsDal.RemoveNewsFromCatalogue(newsToRemove, newsCatalogue);
                 newsCatalogue.RemoveNews(newsToRemove);
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
             }
         }
 
@@ -122,12 +180,36 @@ namespace LogicLayer.Services
         {
             try
             {
+                bool found = false;
+                foreach (string newsTag in news.Tags)
+                {
+                    if (newsTag.Equals(tag))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    throw new NewsTagException("Tag tha you are trying deleting does not exist!");
+                }
                 _tagDal.RemoveTagFromNews(tag, news);
                 news.RemoveTag(tag);
             }
-            catch (Exception ex)
+            catch (DalException ex)
             {
-                throw new Exception(ex.Message);
+                throw new TechincalException(ex.Message);
+            }
+        }
+        public List<NewsCategory> GetNewsCategories()
+        {
+            try
+            {
+                return _newsDal.GetNewsCategories();
+            }
+            catch (Exception)
+            {
+                return new List<NewsCategory>();
             }
         }
     }

@@ -14,18 +14,22 @@ namespace LogicLayer.Models
         public Credentials Credentials { get; }
         public PersonalDetails PersonalDetails { get; }
         public Privilege Privilege { get; }
-        public Author(int id, PersonalDetails personalDetails, Credentials credentials)
+        public Author(int id, Credentials credentials, PersonalDetails personalDetails)
         {
             Id = id;
             PersonalDetails = personalDetails;
             Privilege = Privilege.Author;
             Credentials = credentials;
         }
-        public Author(PersonalDetails personalDetails, Credentials credentials)
-        {;
+        public Author(Credentials credentials, PersonalDetails personalDetails)
+        {
             PersonalDetails = personalDetails;
             Privilege = Privilege.Author;
             Credentials = credentials;
+        }
+        public override string ToString()
+        {
+            return PersonalDetails.ToString();
         }
     }
 }

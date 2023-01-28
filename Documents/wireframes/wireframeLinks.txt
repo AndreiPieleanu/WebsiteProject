@@ -3,3 +3,7 @@ register page - https://wireframe.cc/8AH3l1
 news/sport/didyouknow pages - https://wireframe.cc/1il176
 home page - https://wireframe.cc/PfSUPu
 donate page - https://wireframe.cc/aF3suo
+
+article format page - https://wireframe.cc/sGwam6
+breaking news format page - https://wireframe.cc/WQq1AE
+info news format page - https://wireframe.cc/VEy52p
