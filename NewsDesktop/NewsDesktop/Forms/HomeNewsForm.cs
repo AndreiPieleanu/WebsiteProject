@@ -68,9 +68,11 @@ namespace NewsDesktop.Forms
 
         private void btnEditNews_Click(object sender, EventArgs e)
         {
-            if (dgvNews.SelectedCells.Count > 0)
+            if (dgvNews.SelectedCells.Count > 0 && _selectedNews is not null)
             {
-
+                EditNewsForm editNewsForm = new EditNewsForm(this, _newsCatalogue, _selectedNews);
+                Hide();
+                editNewsForm.Show();
             }
             else
             {
@@ -80,7 +82,7 @@ namespace NewsDesktop.Forms
 
         private void btnDeleteNews_Click(object sender, EventArgs e)
         {
-            if (dgvNews.SelectedCells.Count > 0) 
+            if (dgvNews.SelectedCells.Count > 0 && _selectedNews is not null) 
             {
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this news?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)

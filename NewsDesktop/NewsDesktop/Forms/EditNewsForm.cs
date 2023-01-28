@@ -1,38 +1,117 @@
-﻿using FluentValidation.Results;
-using LogicLayer.Enums;
+﻿using LogicLayer.Enums;
 using LogicLayer.Interfaces;
-using LogicLayer.Models;
 using LogicLayer.Models.News;
-using LogicLayer.Models.Validation;
+using LogicLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NewsDesktop.Forms
 {
-    public partial class AddNewsForm : Form
+    public partial class EditNewsForm : Form
     {
         private Form parentForm;
         private NewsCatalogue _newsCatalogue;
         private List<NewsCategory> newsCategories = new List<NewsCategory>();
         private NewsCategory selectedNewsCategory = NewsCategory.War;
-        public AddNewsForm(Form parentForm, NewsCatalogue newsCatalogue)
+        private INews editableNews;
+        public EditNewsForm(Form parentForm, NewsCatalogue newsCatalogue, INews editableNews)
         {
             InitializeComponent();
             this.parentForm = parentForm;
             _newsCatalogue = newsCatalogue;
+            this.editableNews = editableNews;
             tbxAuthor.Text = Services.LoggedUser.PersonalDetails.ToString();
             newsCategories = Services.NewsService.GetNewsCategories();
-            FillComboBoxWithCategories(cbxNewsCategory);
-            FillComboBoxWithCategories(cbxNewsCategory2);
-            FillComboBoxWithCategories(cbxNewsCategory3);
+            FillBoxesWithData();
+        }
+        private void FillBoxesWithData()
+        {
+            switch (editableNews.NewsType)
+            {
+                case NewsType.Articles:
+                    Article article = (Article)editableNews;
+                    FillComboBoxWithCategories(cbxNewsCategory);
+                    tbxTitle.Text = article.Title;
+                    tbxSubtitle.Text = article.SubTitle;
+                    tbxTimeToRead.Text = article.ReadingTime.ToString();
+                    foreach(string tag in article.Tags)
+                    {
+                        lbxTags.Items.Add(tag);
+                    }
+                    cbxNewsCategory.Text = article.Category.ToString();
+                    tbxText1.Text = article.NewsText;
+                    pbxPicture1.Image = new Bitmap(article.Image.ImageLocation);
+                    if(article.SecondaryImage is not null)
+                    {
+                        pbxPicture2.Image = new Bitmap(article.SecondaryImage.ImageLocation);
+                    }
+                    tbcNews.SelectedTab = tbpNormalNews;
+                    break;
+                case NewsType.BreakingNews:
+                    BreakingNews breakingNews = (BreakingNews)editableNews;
+                    FillComboBoxWithCategories(cbxNewsCategory2);
+                    tbxTitle2.Text = breakingNews.Title;
+                    tbxSubtitle2.Text = breakingNews.SubTitle;
+                    tbxTimeToRead2.Text = breakingNews.ReadingTime.ToString();
+                    foreach (string tag in breakingNews.Tags)
+                    {
+                        lbxTags2.Items.Add(tag);
+                    }
+                    cbxNewsCategory2.Text = breakingNews.Category.ToString();
+                    tbxText1_2.Text = breakingNews.NewsText;
+                    pbxPicture1_2.Image = new Bitmap(breakingNews.Image.ImageLocation);
+                    if (breakingNews.SecondaryImage is not null)
+                    {
+                        pbxPicture2_2.Image = new Bitmap(breakingNews.SecondaryImage.ImageLocation);
+                    }
+                    tbcNews.SelectedTab = tbpBreakingNews;
+                    break;
+                case NewsType.InfoNews:
+                    InfoNews infoNews = (InfoNews)editableNews;
+                    FillComboBoxWithCategories(cbxNewsCategory3);
+                    tbxTitle3.Text = infoNews.Title;
+                    tbxSubtitle3.Text = infoNews.SubTitle;
+                    tbxTimeToRead3.Text = infoNews.ReadingTime.ToString();
+                    foreach (string tag in infoNews.Tags)
+                    {
+                        lbxTags3.Items.Add(tag);
+                    }
+                    cbxNewsCategory3.Text = infoNews.Category.ToString();
+                    tbxText1_3.Text = infoNews.NewsText;
+                    pbxPicture1_3.Image = new Bitmap(infoNews.Image.ImageLocation);
+                    tbcNews.SelectedTab = tbpInfoNews;
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void EditNewsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            parentForm.Show();
+        }
+        private void tbcNews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (editableNews.NewsType)
+            {
+                case NewsType.Articles:
+                    tbcNews.SelectedTab = tbpNormalNews;
+                    break;
+                case NewsType.BreakingNews:
+                    tbcNews.SelectedTab = tbpBreakingNews;
+                    break;
+                case NewsType.InfoNews:
+                    tbcNews.SelectedTab = tbpInfoNews;
+                    break;
+                default:
+                    break;
+            }
         }
         private void SetImageBasedOnPbx(PictureBox pbx)
         {
@@ -43,35 +122,7 @@ namespace NewsDesktop.Forms
                 pbx.Image = new Bitmap(opnfd.FileName);
             }
         }
-        private void AddNewsForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            parentForm.Show();
-        }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                List<string> tags = new List<string>();
-                foreach(var item in lbxTags.Items)
-                {
-                    tags.Add(item.ToString()!);
-                }
-                INews constructedNews = new Article(tbxTitle.Text, tbxSubtitle.Text, Services.LoggedUser, DateTime.Now, selectedNewsCategory, Convert.ToInt32(tbxTimeToRead.Text), tbxText1.Text + tbxText2.Text, new NormalImage(pbxPicture1.Image.Width, pbxPicture1.Image.Height, pbxPicture1.ImageLocation), tags, new NormalImage(pbxPicture2.Image.Width, pbxPicture2.Image.Height, pbxPicture2.ImageLocation));
-
-                Services.NewsService.AddNewsToCatalogue(constructedNews, _newsCatalogue);
-                MessageBox.Show("News has been posted successfully");
-                EmptyFieldsTab1();
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Reading time input is invalid!");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
         private void EmptyFieldsTab1()
         {
             tbxTitle.Clear();
@@ -120,6 +171,30 @@ namespace NewsDesktop.Forms
         {
             EmptyFieldsTab3();
         }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<string> tags = new List<string>();
+                foreach (var item in lbxTags.Items)
+                {
+                    tags.Add(item.ToString()!);
+                }
+                INews constructedNews = new Article(editableNews.Id, tbxTitle.Text, tbxSubtitle.Text, Services.LoggedUser, DateTime.Now, selectedNewsCategory, Convert.ToInt32(tbxTimeToRead.Text), tbxText1.Text + tbxText2.Text, new NormalImage(pbxPicture1.Image.Width, pbxPicture1.Image.Height, pbxPicture1.ImageLocation), tags, new NormalImage(pbxPicture2.Image.Width, pbxPicture2.Image.Height, pbxPicture2.ImageLocation));
+
+                Services.NewsService.EditNewsFromCatalogue(constructedNews, _newsCatalogue);
+                MessageBox.Show("News has been edited successfully");
+                EmptyFieldsTab1();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Reading time input is invalid!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void btnAdd2_Click(object sender, EventArgs e)
         {
             try
@@ -129,10 +204,10 @@ namespace NewsDesktop.Forms
                 {
                     tags.Add(item.ToString()!);
                 }
-                INews constructedNews = new BreakingNews(tbxTitle.Text, tbxSubtitle.Text, Services.LoggedUser, DateTime.Now, selectedNewsCategory, Convert.ToInt32(tbxTimeToRead.Text), tbxText1.Text + tbxText2.Text, new ThumbnailImage(pbxPicture1.Image.Width, pbxPicture1.Image.Height, pbxPicture1.ImageLocation), tags, new NormalImage(pbxPicture2.Image.Width, pbxPicture2.Image.Height, pbxPicture2.ImageLocation));
+                INews constructedNews = new BreakingNews(editableNews.Id, tbxTitle.Text, tbxSubtitle.Text, Services.LoggedUser, DateTime.Now, selectedNewsCategory, Convert.ToInt32(tbxTimeToRead.Text), tbxText1.Text + tbxText2.Text, new ThumbnailImage(pbxPicture1.Image.Width, pbxPicture1.Image.Height, pbxPicture1.ImageLocation), tags, new NormalImage(pbxPicture2.Image.Width, pbxPicture2.Image.Height, pbxPicture2.ImageLocation));
 
-                Services.NewsService.AddNewsToCatalogue(constructedNews, _newsCatalogue);
-                MessageBox.Show("News has been posted successfully");
+                Services.NewsService.EditNewsFromCatalogue(constructedNews, _newsCatalogue);
+                MessageBox.Show("News has been edited successfully");
                 EmptyFieldsTab2();
             }
             catch (FormatException)
@@ -153,10 +228,10 @@ namespace NewsDesktop.Forms
                 {
                     tags.Add(item.ToString()!);
                 }
-                INews constructedNews = new InfoNews(tbxTitle.Text, tbxSubtitle.Text, Services.LoggedUser, DateTime.Now, selectedNewsCategory, Convert.ToInt32(tbxTimeToRead.Text), tbxText1.Text + tbxText2.Text, new NormalImage(pbxPicture1.Image.Width, pbxPicture1.Image.Height, pbxPicture1.ImageLocation), tags);
+                INews constructedNews = new InfoNews(editableNews.Id, tbxTitle.Text, tbxSubtitle.Text, Services.LoggedUser, DateTime.Now, selectedNewsCategory, Convert.ToInt32(tbxTimeToRead.Text), tbxText1.Text + tbxText2.Text, new NormalImage(pbxPicture1.Image.Width, pbxPicture1.Image.Height, pbxPicture1.ImageLocation), tags);
 
-                Services.NewsService.AddNewsToCatalogue(constructedNews, _newsCatalogue);
-                MessageBox.Show("News has been posted successfully");
+                Services.NewsService.EditNewsFromCatalogue(constructedNews, _newsCatalogue);
+                MessageBox.Show("News has been edited successfully");
                 EmptyFieldsTab3();
             }
             catch (FormatException)
@@ -237,7 +312,7 @@ namespace NewsDesktop.Forms
         }
         private void RemoveSelectedIndexFromLbx(ListBox lbx)
         {
-            if(lbx.SelectedIndex != -1)
+            if (lbx.SelectedIndex != -1)
             {
                 lbx.Items.RemoveAt(lbx.SelectedIndex);
             }
@@ -245,7 +320,7 @@ namespace NewsDesktop.Forms
             {
                 MessageBox.Show("No tag selected to be removed!");
             }
-            
+
         }
         private void btnAddTag_Click(object sender, EventArgs e)
         {

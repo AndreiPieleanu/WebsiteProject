@@ -18,24 +18,24 @@ namespace LogicLayer.Models.Validation
                 .WithMessage("{PropertyName} is empty!")
                 .NotEmpty()
                 .WithMessage("{PropertyName} is empty!")
-                .Length(3, 50)
-                .WithMessage("{PropertyName} must have a length between 3 and 50. You have {TotalLength} characters!");
+                .Length(3, 9999)
+                .WithMessage("{PropertyName} must have a length between 3 and 9999. You have {TotalLength} characters!");
             RuleFor(news => news.SubTitle)
                 .Cascade(CascadeMode.Stop)
                 .NotNull()
                 .WithMessage("{PropertyName} is empty!")
                 .NotEmpty()
                 .WithMessage("{PropertyName} is empty!")
-                .Length(3, 50)
-                .WithMessage("{PropertyName} must have a length between 3 and 50. You have {TotalLength} characters!");
+                .Length(3, 9999)
+                .WithMessage("{PropertyName} must have a length between 3 and 9999. You have {TotalLength} characters!");
             RuleFor(news => news.NewsText)
                 .Cascade(CascadeMode.Stop)
                 .NotNull()
                 .WithMessage("{PropertyName} is empty!")
                 .NotEmpty()
                 .WithMessage("{PropertyName} is empty!")
-                .Length(3, 50)
-                .WithMessage("{PropertyName} must have a length between 3 and 50. You have {TotalLength} characters!");
+                .Length(3, 9999)
+                .WithMessage("{PropertyName} must have a length between 3 and 9999. You have {TotalLength} characters!");
             RuleFor(news => news.ReadingTime)
                 .Cascade(CascadeMode.Stop)
                 .NotNull()
