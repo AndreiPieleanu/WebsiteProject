@@ -1,0 +1,22 @@
+﻿@page
+@model NewsWebsite.Pages.LogoutPageModel
+@{
+    ViewData["Title"] = "Logout";
+    string url = Model.ReturnUrl ?? "/Index";
+}
+<header id="header"></header>
+<form method="post">
+    <section id="main" class="container d-flex justify-content-center ">
+        <div role="main" class="pb-3">
+            <h2>Are you sure you want to logout?</h2>
+            <div class="row align-content-center">
+                <div class="col align-center">
+                    <button asp-page-handler="Logout" class="btn btn-primary btn-lg">Yes</button>
+                </div>
+                <div class="col">
+                    <button asp-page-handler="No" class="btn btn-primary btn-lg">No</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

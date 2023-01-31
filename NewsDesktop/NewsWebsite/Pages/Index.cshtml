@@ -1,8 +1,9 @@
 ﻿@page
+@using LogicLayer.Interfaces;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    Layout = "";
+    Layout = "_Layout";
 }
 
 <head>
@@ -13,19 +14,54 @@
 </head>
 
 <body>
-    <div class="index-parent">
-        <div class="index-logo">
-            <img src="images/logo.png" alt="logo" class="img-thumbnail" />
-            <br />
-            <h1>Welcome to RobertHeijn B.V.!</h1>
-            <br />
-            <p>The best shopping market in the Netherlands!</p>
+    <form method="post">
+        <div class="index-parent">
+            <div class="index-ads-left"> 
+
+            </div>
+            <div class="index-ads-right"> 
+
+            </div>
+            <div class="index-main-news"> 
+                <div class="card">
+                    <div class="card-img-top" style="width: 100%; height: 20%;">
+                        <img src="~/images/mainnews.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="newsImage" />
+                    </div>
+                    <div class="card-title" style="width: 100%; height: 40%; text-align: center; font-weight: bold; font-size: 25px;">
+                        <a asp-page="/NewsPageFormat" asp-route-id="@Model.BreakingNews.Id">@Model.BreakingNews.Title</a>
+                    </div>
+                    <div class="card-subtitle" style="width: 100%; height: 40%; text-align: justify; font-size: 20px;">@Model.BreakingNews.SubTitle</div>
+                </div>
+
+            </div>
+            <div class="index-news-secondary"> 
+                @foreach(INews secNews in @Model.NewsCatalogue.AllNews.Values.Take(2).ToList())
+                {
+                    <div class="card">
+                        <div class="card-img-top" style="width: 100%; height: 20%;">
+                            <img src="~/images/mainnews.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="newsImage" />
+                        </div>
+                        <div class="card-title" style="width: 100%; height: 40%; text-align: center; font-weight: bold; font-size: 25px;">
+                            <a asp-page="/NewsPageFormat" asp-route-id="@secNews.Id">@secNews.Title</a>
+                        </div>
+                        <div class="card-subtitle" style="width: 100%; height: 40%; text-align: justify; font-size: 20px;">@secNews.SubTitle</div>
+                    </div>
+                }
+            </div>
+            <div class="index-news-lines">
+                <ul>
+                    @foreach (INews otherNews in @Model.NewsCatalogue.AllNews.Values.Skip(3).ToList())
+                    {
+                        <li><a asp-page="/NewsPageFormat" asp-route-id="@otherNews.Id">@otherNews.Title</a></li>
+                    }
+                    @*<li>The Nauseating Truth About News</li>
+                    <li>6 Bizarre News Facts You Need to Know</li>
+                    <li>Why News Affects Men and Women Differently</li>
+                    <li>The Devastating Impact of Coronavirus on News</li>
+                    <li>What Your Relationship With News Says About Your Personality Type</li>
+                    <li>What We Got Wrong About News</li>*@
+                </ul>
+            </div>
         </div>
-        <div class="index-btnlogin">
-            <a href="Login"><button type="button" class="btn btn-primary btn-lg">Login</button></a>
-        </div>
-        <div class="index-btnregister">
-            <a href="Register"><button type="button" class="btn btn-primary btn-lg">Register</button></a>
-        </div>
-    </div>
+    </form>
 </body>
