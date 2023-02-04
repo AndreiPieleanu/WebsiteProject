@@ -1,0 +1,75 @@
+﻿@page "{id}"
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model NewsWebsite.Pages.NewsPageFormatModel
+@{
+    ViewData["Title"] = "NewsPageFormat";
+    Layout = "_Layout";
+}
+<head>
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/css/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <form method="post">
+        <div class="npf-parent">
+            <div class="npf-ads-left"> 
+
+            </div>
+            <div class="npf-ads-right"> 
+
+            </div>
+            <div class="npf-main-title"> 
+                <h1 class="h1">@Model.SelectedNews.Title</h1>
+            </div>
+            <div class="npf-minutes"> 
+                <i class="fa fa-clock-o" aria-hidden="true"></i><label class="form-label">Time to read: @Model.SelectedNews.ReadingTime minutes</label>
+            </div>
+            <div class="npf-author"> 
+                <label class="form-label">Author: @Model.SelectedNews.Author.PersonalDetails.ToString()</label>
+            </div>
+            <div class="npf-image1"> 
+                <div class="img-thumbnail" style="display: flex;">
+                    <img src="~/images/mainnews.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="newsImage" />
+                </div>
+                <div class="card-subtitle">
+                    <h4 class="h4">@Model.SelectedNews.SubTitle</h4>
+                </div>
+            </div>
+            <div class="npf-text1"> 
+                <p class="text-dark" style="font-size: 20px;">&emsp;@Model.NewsTextDivided.Item1</p>
+            </div>
+                @if(@Model.SelectedNews.NewsType != LogicLayer.Enums.NewsType.InfoNews)
+                {
+                    <div class="npf-image2">
+                        @{
+                            if (@Model.BreakingNews is not null && @Model.BreakingNews.SecondaryImage is not null)
+                            {
+                            <div class="img-thumbnail" style="display: flex;">
+                                <img src="@Model.BreakingNews.SecondaryImage.ImageLocation" style="width: 100%; height: 100%; object-fit: cover;" alt="newsImage" />
+                            </div>
+                            }
+                            else if(@Model.Article is not null && @Model.Article.SecondaryImage is not null)
+                            {
+                            <div class="img-thumbnail" style="display: flex;">
+                                <img src="@Model.Article.SecondaryImage.ImageLocation" style="width: 100%; height: 100%; object-fit: cover;" alt="newsImage" />
+                            </div>
+                            }
+                        }
+                    </div>
+                }
+            <div class="npf-text2"> 
+                <p class="text-dark" style="font-size: 20px;">&emsp;@Model.NewsTextDivided.Item2</p>
+            </div>
+            <div class="npf-tags"> 
+                <label class="form-label">Tags: </label>
+                @foreach (var text in @Model.SelectedNews.Tags)
+                {
+                    <input type="submit" value="@text" asp-for="@Model.SelectedTag" asp-page-handler="GetTag" class="btn btn-sm" />
+                }
+            </div>
+        </div>
+    </form>
+</body>

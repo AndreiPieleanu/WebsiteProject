@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicLayer", "LogicLayer\Lo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{B4543BF4-D789-40CC-86FE-5BA83222E869}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockDAL", "MockDAL\MockDAL.csproj", "{1046FAB4-30F0-4B97-890C-026A4DF33939}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockDAL", "MockDAL\MockDAL.csproj", "{1046FAB4-30F0-4B97-890C-026A4DF33939}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{3E393EEE-B14C-4736-B684-391B579A47AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{3E393EEE-B14C-4736-B684-391B579A47AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

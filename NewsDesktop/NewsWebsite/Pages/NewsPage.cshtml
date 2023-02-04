@@ -1,8 +1,10 @@
 ﻿@page
 @using LogicLayer.Interfaces;
-@model IndexModel
+@model NewsWebsite.Pages.NewsPageModel
 @{
-    ViewData["Title"] = "Home page";
+}
+@{
+    ViewData["Title"] = "News";
     Layout = "_Layout";
 }
 
@@ -56,12 +58,6 @@
                     {
                         <li><a asp-page="/NewsPageFormat" asp-route-id="@otherNews.Id">@otherNews.Title</a></li>
                     }
-                    @*<li>The Nauseating Truth About News</li>
-                    <li>6 Bizarre News Facts You Need to Know</li>
-                    <li>Why News Affects Men and Women Differently</li>
-                    <li>The Devastating Impact of Coronavirus on News</li>
-                    <li>What Your Relationship With News Says About Your Personality Type</li>
-                    <li>What We Got Wrong About News</li>*@
                 </ul>
             </div>
         </div>
