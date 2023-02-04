@@ -49,5 +49,20 @@ namespace LogicLayer.Interfaces
         {
             return news.Title.Equals(Title) && news.SubTitle.Equals(SubTitle) && news.Author.Equals(Author) && news.CreatedDate.Date.Equals(CreatedDate.Date) && news.NewsText.Equals(NewsText) && news.ReadingTime == ReadingTime && news.Category == Category && news.NewsType == NewsType;
         }
+        public Tuple<string, string> BreakTextIn2EqualHalves()
+        {
+            string[] newsTextDivided = NewsText.Split(".");
+            string half1 = string.Empty;
+            string half2 = string.Empty;
+            for(int i = 0; i < newsTextDivided.Length / 2; i++)
+            {
+                half1 = half1 + newsTextDivided[i] + ". ";
+            }
+            for(int i = newsTextDivided.Length / 2; i < newsTextDivided.Length; i++)
+            {
+                half2 = half2 + newsTextDivided[i] + ". ";
+            }
+            return new Tuple<string, string>(half1, half2);
+        }
     }
 }
