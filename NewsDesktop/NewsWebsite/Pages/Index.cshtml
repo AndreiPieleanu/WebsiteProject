@@ -37,7 +37,7 @@
                 }
             </div>
             <div class="index-news-secondary"> 
-                @foreach(INews secNews in @Model.AllNews.Take(2).ToList())
+                @foreach(INews secNews in @Model.AllNews.Skip(1).Take(2).ToList())
                 {
                     <div class="card">
                         <div class="card-img-top" style="width: 100%; height: 20%;">
