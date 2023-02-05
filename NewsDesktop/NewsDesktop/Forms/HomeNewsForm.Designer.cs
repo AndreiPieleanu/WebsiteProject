@@ -50,7 +50,7 @@
             this.dgvNews.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNews.Size = new System.Drawing.Size(1145, 323);
             this.dgvNews.TabIndex = 0;
-            this.dgvNews.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNews_CellContentClick);
+            this.dgvNews.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNews_CellContentClick);
             // 
             // bntAddNews
             // 

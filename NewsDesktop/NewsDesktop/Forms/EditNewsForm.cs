@@ -21,12 +21,14 @@ namespace NewsDesktop.Forms
         private List<NewsCategory> newsCategories = new List<NewsCategory>();
         private NewsCategory selectedNewsCategory = NewsCategory.War;
         private INews editableNews;
+        private Tuple<string, string> dividedText = new Tuple<string, string>(string.Empty, string.Empty);
         public EditNewsForm(Form parentForm, NewsCatalogue newsCatalogue, INews editableNews)
         {
             InitializeComponent();
             this.parentForm = parentForm;
             _newsCatalogue = newsCatalogue;
             this.editableNews = editableNews;
+            dividedText = this.editableNews.BreakTextIn2EqualHalves();
             tbxAuthor.Text = Services.LoggedUser.PersonalDetails.ToString();
             newsCategories = Services.NewsService.GetNewsCategories();
             FillBoxesWithData();
@@ -46,11 +48,12 @@ namespace NewsDesktop.Forms
                         lbxTags.Items.Add(tag);
                     }
                     cbxNewsCategory.Text = article.Category.ToString();
-                    tbxText1.Text = article.NewsText;
-                    pbxPicture1.Image = new Bitmap(article.Image.ImageLocation);
+                    tbxText1.Text = dividedText.Item1;
+                    tbxText2.Text = dividedText.Item2;
+                    pbxPicture1.Load(article.Image.ImageLocation);
                     if(article.SecondaryImage is not null)
                     {
-                        pbxPicture2.Image = new Bitmap(article.SecondaryImage.ImageLocation);
+                        pbxPicture2.Load(article.SecondaryImage.ImageLocation);
                     }
                     tbcNews.SelectedTab = tbpNormalNews;
                     break;
@@ -65,11 +68,12 @@ namespace NewsDesktop.Forms
                         lbxTags2.Items.Add(tag);
                     }
                     cbxNewsCategory2.Text = breakingNews.Category.ToString();
-                    tbxText1_2.Text = breakingNews.NewsText;
-                    pbxPicture1_2.Image = new Bitmap(breakingNews.Image.ImageLocation);
+                    tbxText1_2.Text = dividedText.Item1;
+                    tbxText2_2.Text = dividedText.Item2;
+                    pbxPicture1_2.Load(breakingNews.Image.ImageLocation);
                     if (breakingNews.SecondaryImage is not null)
                     {
-                        pbxPicture2_2.Image = new Bitmap(breakingNews.SecondaryImage.ImageLocation);
+                        pbxPicture2_2.Load(breakingNews.SecondaryImage.ImageLocation);
                     }
                     tbcNews.SelectedTab = tbpBreakingNews;
                     break;
@@ -84,8 +88,9 @@ namespace NewsDesktop.Forms
                         lbxTags3.Items.Add(tag);
                     }
                     cbxNewsCategory3.Text = infoNews.Category.ToString();
-                    tbxText1_3.Text = infoNews.NewsText;
-                    pbxPicture1_3.Image = new Bitmap(infoNews.Image.ImageLocation);
+                    tbxText1_3.Text = dividedText.Item1;
+                    tbxText2_3.Text = dividedText.Item2;
+                    pbxPicture1_3.Load(infoNews.Image.ImageLocation);
                     tbcNews.SelectedTab = tbpInfoNews;
                     break;
                 default:
